@@ -25,7 +25,7 @@ export default function Header() {
             <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Pricing</a>
           </div>
           <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>
-            Get a Quote
+            Start a Project
           </a>
         </div>
       </div>

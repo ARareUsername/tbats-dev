@@ -58,8 +58,8 @@ export default function Hero() {
           </p>
           
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="#estimator" className="btn-primary">
-              Estimate Project
+            <a href="#contact" className="btn-primary">
+              Start a Project
             </a>
             <a href="#process" className="btn-secondary">
               How We Work

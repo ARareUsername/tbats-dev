@@ -64,7 +64,7 @@ export default function ConsultationForm() {
             </div>
             
             <button type="submit" className="btn-primary" style={{ marginTop: '1rem', justifyContent: 'center' }}>
-              Schedule Call
+              Start a Project
             </button>
           </form>
         </div>

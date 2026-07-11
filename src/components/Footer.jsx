@@ -37,7 +37,7 @@ export default function Footer() {
               <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1rem' }}>Contact</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <li style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>hello@tbats.dev</li>
-                <li style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Manila, Philippines</li>
+                <li style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Pampanga, Philippines</li>
               </ul>
             </div>
           </div>
