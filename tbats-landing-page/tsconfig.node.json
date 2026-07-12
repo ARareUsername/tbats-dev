@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "target": "ES2022",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "types": ["node", "vitest/globals", "jsdom", "@testing-library/jest-dom"]
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "vitest.setup.ts", "playwright.config.ts", "storybook.config.ts"]
+}
