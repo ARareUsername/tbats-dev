@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
-  setTheme: (theme: 'light' | 'dark') => void;
+  setTheme: (_theme: 'light' | 'dark') => void;
 }
 
 export default function Header({ theme, setTheme }: HeaderProps) {

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ServicesList from '../components/ServicesList';
@@ -14,10 +15,10 @@ import { motion } from 'framer-motion';
 
 interface MainLandingPageProps {
   theme: 'light' | 'dark';
-  setTheme: (theme: 'light' | 'dark') => void;
+  setTheme: (_theme: 'light' | 'dark') => void;
 }
 
-const ScrollReveal = ({ children }: { children: React.ReactNode }) => (
+const ScrollReveal = ({ children }: { children: ReactNode }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}

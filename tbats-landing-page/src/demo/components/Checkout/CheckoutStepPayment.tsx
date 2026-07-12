@@ -13,7 +13,7 @@ export default function CheckoutStepPayment({
   onBack
 }: {
   data: PaymentData | null;
-  onNext: (d: PaymentData) => void;
+  onNext: (_d: PaymentData) => void;
   onBack: () => void;
 }) {
   const [method, setMethod] = useState<string>(data?.method || 'card');

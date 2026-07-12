@@ -17,7 +17,7 @@ export interface DemoCategory {
 
 export interface CategoryBarProps {
   activeCategory: string;
-  onSelectCategory: (category: string) => void;
+  onSelectCategory: (_category: string) => void;
   categories: DemoCategory[];
 }
 

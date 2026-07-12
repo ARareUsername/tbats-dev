@@ -11,22 +11,25 @@ export default function ConsultationForm() {
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSubmitting(true);
     setErrorMsg('');
 
-    try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.currentTarget, PUBLIC_KEY);
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-      e.currentTarget.reset();
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      setErrorMsg('Failed to send request. Please try again or email us directly.');
-    } finally {
-      setSubmitting(false);
-    }
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY)
+      .then(() => {
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 5000);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        setErrorMsg('Failed to send request. Please try again or email us directly.');
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
   };
 
   return (
@@ -55,7 +58,7 @@ export default function ConsultationForm() {
             {/* Left: Contact Info */}
             <div className="contact-info-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', height: '100%', textAlign: 'left' }}>
               <span className="text-accent" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 600 }}>Get In Touch</span>
-              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginTop: '0.5rem', marginBottom: '1.5rem', fontWeight: 600 }}>Let's Connect</h2>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginTop: '0.5rem', marginBottom: '1.5rem', fontWeight: 600 }}>Let&apos;s Connect</h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '2.5rem', maxWidth: '450px' }}>
                 Have a question, a project in mind, or just want to say hello? Drop us a message, or reach out to us directly through the details below. We&apos;d love to chat.
               </p>
@@ -145,19 +148,21 @@ export default function ConsultationForm() {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div className="grid-2" style={{ gap: '1.5rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <label style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name</label>
+                    <label htmlFor="user_name" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name</label>
                     <input 
                       required 
                       type="text" 
+                      id="user_name"
                       name="user_name"
                       style={{ padding: '1rem', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }} 
                     />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <label style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</label>
+                    <label htmlFor="user_email" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</label>
                     <input 
                       required 
                       type="email" 
+                      id="user_email"
                       name="user_email"
                       style={{ padding: '1rem', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }} 
                     />
@@ -165,21 +170,23 @@ export default function ConsultationForm() {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Budget Estimate</label>
+                  <label htmlFor="project_budget" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Budget Estimate</label>
                   <select 
+                    id="project_budget"
                     name="project_budget"
                     style={{ padding: '1rem', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)', appearance: 'none' }}
                   >
                     <option value="₱20,000 (Starter)" style={{ color: 'var(--text-primary)', background: 'var(--bg-dark-end)' }}>₱20,000 (Starter)</option>
                     <option value="₱49,000 (Growth)" style={{ color: 'var(--text-primary)', background: 'var(--bg-dark-end)' }}>₱49,000 (Growth)</option>
-                    <option value="Custom / let's scope together" style={{ color: 'var(--text-primary)', background: 'var(--bg-dark-end)' }}>Custom / let's scope together</option>
+                    <option value="Custom / let's scope together" style={{ color: 'var(--text-primary)', background: 'var(--bg-dark-end)' }}>Custom / let&apos;s scope together</option>
                   </select>
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Project Description</label>
+                  <label htmlFor="project_desc" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Project Description</label>
                   <textarea 
                     required 
+                    id="project_desc"
                     name="project_desc"
                     rows={4} 
                     style={{ padding: '1rem', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)', resize: 'vertical' }}

@@ -16,7 +16,7 @@ export default function CheckoutStepShipping({
   onCancel
 }: {
   data: ShippingData | null;
-  onNext: (d: ShippingData) => void;
+  onNext: (_d: ShippingData) => void;
   onCancel: () => void;
 }) {
   const [formData, setFormData] = useState<ShippingData>(data || {

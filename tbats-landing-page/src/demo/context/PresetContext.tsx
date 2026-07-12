@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { Preset, PresetId} from '../presets/registry';
@@ -5,7 +6,7 @@ import { presets, getPresetById } from '../presets/registry';
 
 interface PresetContextValue {
   activePreset: Preset;
-  changePreset: (presetId: PresetId) => void;
+  changePreset: (_presetId: PresetId) => void;
   presets: readonly Preset[];
 }
 

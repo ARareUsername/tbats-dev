@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useReducer, useEffect, type ReactNode } from 'react';
 
 export interface CartItem {
@@ -90,11 +91,11 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
 interface CartContextValue {
   state: CartState;
-  addItem: (product: CartItem['product'], variant: CartItem['variant'], quantity?: number) => void;
-  removeItem: (productId: string, variant: CartItem['variant']) => void;
-  updateQuantity: (productId: string, variant: CartItem['variant'], quantity: number) => void;
+  addItem: (_product: CartItem['product'], _variant: CartItem['variant'], _quantity?: number) => void;
+  removeItem: (_productId: string, _variant: CartItem['variant']) => void;
+  updateQuantity: (_productId: string, _variant: CartItem['variant'], _quantity: number) => void;
   toggleDrawer: () => void;
-  setDrawerOpen: (isOpen: boolean) => void;
+  setDrawerOpen: (_isOpen: boolean) => void;
   clearCart: () => void;
 }
 

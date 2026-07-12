@@ -34,7 +34,7 @@ export default function FooterPlayful({ brandName }: BrandProps) {
               </>
             ) : (
               <>
-                <a href="#track">Where\'s my goodies?</a>
+                <a href="#track">Where&apos;s my goodies?</a>
                 <a href="#help">Help Desk</a>
               </>
             )}

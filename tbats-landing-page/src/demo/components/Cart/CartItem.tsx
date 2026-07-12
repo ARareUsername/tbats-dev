@@ -1,7 +1,7 @@
-import { useCart, type CartItem } from '../../context/CartContext';
+import { useCart, type CartItem as CartItemType } from '../../context/CartContext';
 import ProductPlaceholder from '../UI/ProductPlaceholder';
 
-export default function CartItem({ item }: { item: CartItem }) {
+export default function CartItem({ item }: { item: CartItemType }) {
   const { updateQuantity, removeItem } = useCart();
   const { product, variant, quantity } = item;
 

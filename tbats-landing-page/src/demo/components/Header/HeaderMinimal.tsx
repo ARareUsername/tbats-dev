@@ -57,7 +57,7 @@ export default function HeaderMinimal({ brandName }: BrandProps) {
             onClick={() => handleCTA('Launching connection dialogue...')}
             style={{ border: '1px solid var(--color-border)', borderRadius: '4px', padding: '0.4rem 1rem', fontSize: '0.85rem' }}
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         ) : (
           <button className="p-header-cart-trigger" onClick={toggleDrawer}>

@@ -36,6 +36,14 @@ export default function DemoLayout({ children, projectName }: DemoLayoutProps) {
       <div 
         className={`demo-sidebar-overlay ${isSidebarOpen ? 'active' : ''}`}
         onClick={() => setIsSidebarOpen(false)}
+        role="button"
+        tabIndex={-1}
+        aria-label="Close sidebar"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setIsSidebarOpen(false);
+          }
+        }}
       />
 
       {/* Sidebar (fixed on desktop, drawer on mobile) */}

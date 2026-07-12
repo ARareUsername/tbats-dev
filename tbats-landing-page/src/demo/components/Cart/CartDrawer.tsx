@@ -50,6 +50,14 @@ export default function CartDrawer({ onProceedToCheckout }: { onProceedToCheckou
       <div 
         className="p-cart-drawer-overlay"
         onClick={toggleDrawer}
+        role="button"
+        tabIndex={-1}
+        aria-label="Close cart drawer"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            toggleDrawer();
+          }
+        }}
       />
       
       {/* Panel */}

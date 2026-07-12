@@ -58,7 +58,7 @@ export default function HeaderBold({ brandName }: BrandProps) {
             onClick={() => handleCTA('Launching contact form...')}
             style={{ fontWeight: 900 }}
           >
-            LET'S TALK
+            LET&apos;S TALK
           </button>
         ) : (
           <button className="p-header-cart-btn" onClick={toggleDrawer}>
