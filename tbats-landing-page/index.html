@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>tbats.dev | Premium Web Development & Design Studio</title>
+    <meta name="description" content="Premium web development and design agency crafting high-converting, blazing-fast, and visually stunning digital experiences." />
+    
+    <!-- Google Symbols for UI icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+      .google-symbols {
+        font-family: 'Material Symbols Outlined';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <!-- Early theme and font initialization to prevent FOUT/flashing -->
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('theme');
+          var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          if (theme === 'light') {
+            document.documentElement.classList.add('theme-light');
+          }
+          var savedFont = localStorage.getItem('fontMode');
+          if (savedFont === 'sans') {
+            document.documentElement.classList.add('theme-sans');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

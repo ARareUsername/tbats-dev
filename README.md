@@ -1,38 +1,28 @@
-# tbats.dev - Premium Web Development Studio
+# TBATS Studio - Premium Agency & Dev Sandbox
 
-This is the codebase for **tbats.dev**, a sleek, high-fidelity premium web development agency website.
+Welcome to the **TBATS Studio** repository! This workspace contains the complete agency website, the interactive development sandbox layouts, and the specification-driven development files.
 
-The project is built with **React** and **Vite**, featuring:
-- Pure Black & Editorial typography (Playfair Display & Inter)
-- Smooth CSS animations and transitions
-- Interactive Layout & Pricing Estimator
-- 5-Step Client Journey Timeline
+## Project Structure
 
-## How to Run Locally
+- **[tbats-landing-page/](file:///home/rare/Dev/TBATS/tbats-landing-page)**: The main frontend codebase built with **React** + **Vite**, featuring dynamic styling engines, polymorphic templates (Blog, E-Commerce, Portfolio), localized pricing models, and sidebar toggles.
+- **[openspec/](file:///home/rare/Dev/TBATS/openspec)**: The specification-driven development specs and archived changes tracking repository.
+- **[.agent/](file:///home/rare/Dev/TBATS/.agent)**: Custom AI agent cognitive skills and development workflows (like `sandbox-high-fidelity-checks`).
 
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+## Getting Started
 
-### Setup and Development
+To run the agency landing page and samplers locally, navigate to the subfolder and run:
 
-1. **Install Dependencies**
-   Navigate to the project directory and install the required NPM packages:
-   ```bash
-   npm install
-   ```
-
-2. **Start the Development Server**
-   Start the Vite dev server with hot module replacement:
-   ```bash
-   npm run dev
-   ```
-
-3. **View the Website**
-   Open your browser and navigate to the local URL provided in the terminal (usually `http://localhost:5173`).
+```bash
+cd tbats-landing-page
+npm install
+npm run dev
+```
 
 ### Building for Production
-To build the application for deployment, run:
+
+To compile optimized assets:
+
 ```bash
+cd tbats-landing-page
 npm run build
 ```
-This will generate optimized, minified files in the `dist` directory.
