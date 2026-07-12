@@ -1,11 +1,15 @@
 import type { CategoryBarProps } from '@/types/demo';
 import defaultCategories from '../../data/categories';
 
-export default function CategoryBarEditorial({ activeCategory, onSelectCategory, categories = [...defaultCategories] }: CategoryBarProps) {
+export default function CategoryBarEditorial({
+  activeCategory,
+  onSelectCategory,
+  categories = [...defaultCategories],
+}: CategoryBarProps) {
   return (
     <div className="p-category-bar-editorial">
       <div className="p-category-container">
-        {categories.map((cat) => {
+        {categories.map(cat => {
           const isActive = cat.slug === activeCategory;
           return (
             <button

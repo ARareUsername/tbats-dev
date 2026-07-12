@@ -11,7 +11,7 @@ const reactJsxRuntimeConfig = reactPlugin.configs['jsx-runtime'];
 const jsxA11yConfig = jsxA11yPlugin.configs.recommended;
 
 export default tseslint.config(
-  { ignores: ['dist/', 'node_modules/', '*.config.*', 'coverage/', 'playwright-report/', 'src/demo/**/*.js'] },
+  { ignores: ['dist/', 'build/', 'node_modules/', '.react-router/', '*.config.*', 'coverage/', 'playwright-report/', 'storybook-static/', '.storybook/', 'e2e/', 'src/demo/**/*.js'] },
   js.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
@@ -54,6 +54,7 @@ export default tseslint.config(
         fetch: 'readonly',
         FormData: 'readonly',
         URLSearchParams: 'readonly',
+        process: 'readonly',
       },
     },
     settings: { react: { version: '19.0' } },
@@ -65,6 +66,7 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'react/jsx-no-target-blank': 'off',
       'react/prop-types': 'off',
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-floating-promises': 'warn',

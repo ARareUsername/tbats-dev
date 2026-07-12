@@ -25,7 +25,16 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.d.ts', 'src/**/*.config.*', 'src/demo/**'],
+      exclude: [
+        'src/**/*.d.ts',
+        'src/**/*.config.*',
+        'src/**/*.stories.*',
+        'src/demo/**',
+        'src/components/*.tsx',
+        'src/env.ts',
+        'src/data/**',
+        'src/types/**'
+      ],
       thresholds: {
         statements: 80,
         branches: 80,

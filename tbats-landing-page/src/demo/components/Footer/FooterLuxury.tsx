@@ -11,13 +11,20 @@ export default function FooterLuxury({ brandName }: BrandProps) {
       <div className="p-footer-container">
         <div className="p-footer-grid">
           <div className="p-footer-col">
-            <h5 className="p-footer-title">{brandName || (isBlog ? 'AETHER HOUSE JOURNAL' : isPortfolio ? 'AETHER CREATIVE HOUSE' : 'AETHER')}</h5>
+            <h5 className="p-footer-title">
+              {brandName ||
+                (isBlog
+                  ? 'AETHER HOUSE JOURNAL'
+                  : isPortfolio
+                    ? 'AETHER CREATIVE HOUSE'
+                    : 'AETHER')}
+            </h5>
             <p className="p-footer-desc">
-              {isBlog 
+              {isBlog
                 ? 'Curators of modern development thoughts, code systems, and visual design patterns.'
                 : isPortfolio
-                ? 'Bespoke digital architecture, branding curations, and responsive web platforms.'
-                : 'Curators of timeless aesthetic artifacts and heirloom-quality furnishings.'}
+                  ? 'Bespoke digital architecture, branding curations, and responsive web platforms.'
+                  : 'Curators of timeless aesthetic artifacts and heirloom-quality furnishings.'}
             </p>
           </div>
           <div className="p-footer-col">
@@ -51,7 +58,16 @@ export default function FooterLuxury({ brandName }: BrandProps) {
           </div>
         </div>
         <div className="p-footer-bottom">
-          <p>© 2026 {brandName || (isBlog ? 'AETHER HOUSE JOURNAL' : isPortfolio ? 'AETHER CREATIVE HOUSE' : 'AETHER')} House. Created for discerning living.</p>
+          <p>
+            © 2026{' '}
+            {brandName ||
+              (isBlog
+                ? 'AETHER HOUSE JOURNAL'
+                : isPortfolio
+                  ? 'AETHER CREATIVE HOUSE'
+                  : 'AETHER')}{' '}
+            House. Created for discerning living.
+          </p>
         </div>
       </div>
     </footer>

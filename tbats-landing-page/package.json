@@ -1,17 +1,16 @@
 {
   "name": "tbats-landing-page",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
     "build": "vite build",
     "build:analyze": "ANALYZE=true vite build --mode analyze",
-    "preview": "vite preview",
-    "typecheck": "tsc --noEmit",
+    "build:storybook": "storybook build",
+    "dev": "vite --host",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\"",
     "lint-staged": {
       "*.{ts,tsx}": [
         "eslint --fix --max-warnings 0",
@@ -21,13 +20,14 @@
         "prettier --write"
       ]
     },
+    "prepare": "husky",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
     "test": "vitest run",
-    "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build",
-    "prepare": "husky"
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -36,7 +36,8 @@
     "isbot": "^5.1.17",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -70,9 +71,11 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "eslint-plugin-storybook": "^0.10.0",
     "husky": "^9.1.6",
+    "jsdom": "^29.1.1",
     "lint-staged": "^15.2.10",
     "oxlint": "^1.71.0",
     "prettier": "^3.3.3",
+    "prettier-plugin-packagejson": "^3.0.2",
     "rollup-plugin-visualizer": "^5.12.0",
     "storybook": "^8.4.0",
     "typescript": "^5.6.3",

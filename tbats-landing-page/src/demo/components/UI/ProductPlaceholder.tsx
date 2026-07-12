@@ -6,7 +6,12 @@ interface ProductPlaceholderProps {
 export default function ProductPlaceholder({ name, category }: ProductPlaceholderProps) {
   // Get first letters of product name for editorial initials (e.g. Oak Lounge Chair -> OL)
   const initials = name
-    ? name.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase()
+    ? name
+        .split(' ')
+        .map(word => word[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase()
     : 'P';
 
   return (

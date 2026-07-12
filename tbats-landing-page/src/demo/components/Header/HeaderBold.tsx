@@ -12,7 +12,7 @@ export default function HeaderBold({ brandName }: BrandProps) {
 
   const handleCTA = (message: string) => {
     const event = new CustomEvent('show-toast', {
-      detail: { message: message.toUpperCase(), type: 'info' }
+      detail: { message: message.toUpperCase(), type: 'info' },
     });
     window.dispatchEvent(event);
   };
@@ -20,24 +20,35 @@ export default function HeaderBold({ brandName }: BrandProps) {
   return (
     <div className="p-header-bold">
       <div className="p-header-container">
-        <div className="p-header-brand">{(brandName || (isBlog ? 'ESSENTIALS BOLD' : isPortfolio ? 'CREATIVE SHIELD' : 'NOVUS BOLD')).toUpperCase()}</div>
-        
+        <div className="p-header-brand">
+          {(
+            brandName ||
+            (isBlog ? 'ESSENTIALS BOLD' : isPortfolio ? 'CREATIVE SHIELD' : 'NOVUS BOLD')
+          ).toUpperCase()}
+        </div>
+
         <nav className="p-header-nav">
           {isBlog ? (
             <>
-              <a href="#drops" className="active">READ POSTS</a>
+              <a href="#drops" className="active">
+                READ POSTS
+              </a>
               <a href="#categories">CATEGORIES</a>
               <a href="#faq">FAQ</a>
             </>
           ) : isPortfolio ? (
             <>
-              <a href="#works" className="active">PORTFOLIO</a>
+              <a href="#works" className="active">
+                PORTFOLIO
+              </a>
               <a href="#expertise">SERVICES</a>
               <a href="#faq">FAQ</a>
             </>
           ) : (
             <>
-              <a href="#shop" className="active">SHOP NOW</a>
+              <a href="#shop" className="active">
+                SHOP NOW
+              </a>
               <a href="#drops">NEW DROPS</a>
               <a href="#faq">FAQ</a>
             </>
@@ -45,20 +56,20 @@ export default function HeaderBold({ brandName }: BrandProps) {
         </nav>
 
         {isBlog ? (
-          <button 
-            className="p-header-cart-btn" 
+          <button
+            className="p-header-cart-btn"
             onClick={() => handleCTA('Launching newsletter subscription...')}
             style={{ fontWeight: 900 }}
           >
             SUBSCRIBE
           </button>
         ) : isPortfolio ? (
-          <button 
-            className="p-header-cart-btn" 
+          <button
+            className="p-header-cart-btn"
             onClick={() => handleCTA('Launching contact form...')}
             style={{ fontWeight: 900 }}
           >
-            LET'S TALK
+            LET&apos;S TALK
           </button>
         ) : (
           <button className="p-header-cart-btn" onClick={toggleDrawer}>

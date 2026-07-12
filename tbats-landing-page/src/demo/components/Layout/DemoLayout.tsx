@@ -33,15 +33,23 @@ export default function DemoLayout({ children, projectName }: DemoLayoutProps) {
   return (
     <div className={`demo-layout ${isSidebarMinimized ? 'minimized' : ''}`}>
       {/* Mobile Sidebar Overlay */}
-      <div 
+      <div
         className={`demo-sidebar-overlay ${isSidebarOpen ? 'active' : ''}`}
         onClick={() => setIsSidebarOpen(false)}
+        role="button"
+        tabIndex={-1}
+        aria-label="Close sidebar"
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setIsSidebarOpen(false);
+          }
+        }}
       />
 
       {/* Sidebar (fixed on desktop, drawer on mobile) */}
-      <DemoSidebar 
-        isOpen={isSidebarOpen} 
-        onClose={() => setIsSidebarOpen(false)} 
+      <DemoSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
         projectName={projectName}
         isMinimized={isSidebarMinimized}
         onToggleMinimize={() => setIsSidebarMinimized(!isSidebarMinimized)}
@@ -49,16 +57,14 @@ export default function DemoLayout({ children, projectName }: DemoLayoutProps) {
 
       {/* Main Viewport */}
       <div className="demo-main-viewport">
-        <DemoHeader 
-          projectName={projectName} 
-          onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} 
+        <DemoHeader
+          projectName={projectName}
+          onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           isSidebarMinimized={isSidebarMinimized}
           onToggleMinimize={() => setIsSidebarMinimized(false)}
         />
-        
-        <main className="demo-main-content">
-          {children}
-        </main>
+
+        <main className="demo-main-content">{children}</main>
       </div>
     </div>
   );

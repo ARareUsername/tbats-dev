@@ -10,17 +10,17 @@ export interface PaymentData {
 export default function CheckoutStepPayment({
   data,
   onNext,
-  onBack
+  onBack,
 }: {
   data: PaymentData | null;
-  onNext: (d: PaymentData) => void;
+  onNext: (_d: PaymentData) => void;
   onBack: () => void;
 }) {
   const [method, setMethod] = useState<string>(data?.method || 'card');
   const [cardData, setCardData] = useState<{ number: string; expiry: string; cvc: string }>({
     number: data?.number || '',
     expiry: data?.expiry || '',
-    cvc: data?.cvc || ''
+    cvc: data?.cvc || '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -64,7 +64,7 @@ export default function CheckoutStepPayment({
     } else if (name === 'cvc') {
       value = value.replace(/\D/g, '').substring(0, 4);
     }
-    
+
     setCardData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
@@ -85,24 +85,24 @@ export default function CheckoutStepPayment({
       {/* Payment Selector */}
       <div className="p-payment-method-selector">
         <label className={`p-payment-radio-label ${method === 'card' ? 'active' : ''}`}>
-          <input 
-            type="radio" 
-            name="method" 
-            value="card" 
-            checked={method === 'card'} 
-            onChange={() => setMethod('card')} 
+          <input
+            type="radio"
+            name="method"
+            value="card"
+            checked={method === 'card'}
+            onChange={() => setMethod('card')}
           />
           <span className="material-symbols-outlined">credit_card</span>
           <span>Credit Card</span>
         </label>
-        
+
         <label className={`p-payment-radio-label ${method === 'paypal' ? 'active' : ''}`}>
-          <input 
-            type="radio" 
-            name="method" 
-            value="paypal" 
-            checked={method === 'paypal'} 
-            onChange={() => setMethod('paypal')} 
+          <input
+            type="radio"
+            name="method"
+            value="paypal"
+            checked={method === 'paypal'}
+            onChange={() => setMethod('paypal')}
           />
           <span className="material-symbols-outlined">payments</span>
           <span>PayPal Mock</span>
@@ -113,41 +113,41 @@ export default function CheckoutStepPayment({
         <div className="p-card-input-fields">
           <div className="p-form-group">
             <label htmlFor="number">Card Number *</label>
-            <input 
-              type="text" 
-              id="number" 
-              name="number" 
-              value={cardData.number} 
-              onChange={handleCardChange} 
+            <input
+              type="text"
+              id="number"
+              name="number"
+              value={cardData.number}
+              onChange={handleCardChange}
               className={errors.number ? 'error' : ''}
               placeholder="4242 4242 4242 4242"
             />
             {errors.number && <span className="p-form-error">{errors.number}</span>}
           </div>
-          
+
           <div className="p-form-row">
             <div className="p-form-group">
               <label htmlFor="expiry">Expiration Date *</label>
-              <input 
-                type="text" 
-                id="expiry" 
-                name="expiry" 
-                value={cardData.expiry} 
-                onChange={handleCardChange} 
+              <input
+                type="text"
+                id="expiry"
+                name="expiry"
+                value={cardData.expiry}
+                onChange={handleCardChange}
                 className={errors.expiry ? 'error' : ''}
                 placeholder="MM/YY"
               />
               {errors.expiry && <span className="p-form-error">{errors.expiry}</span>}
             </div>
-            
+
             <div className="p-form-group">
               <label htmlFor="cvc">CVC Code *</label>
-              <input 
-                type="text" 
-                id="cvc" 
-                name="cvc" 
-                value={cardData.cvc} 
-                onChange={handleCardChange} 
+              <input
+                type="text"
+                id="cvc"
+                name="cvc"
+                value={cardData.cvc}
+                onChange={handleCardChange}
                 className={errors.cvc ? 'error' : ''}
                 placeholder="123"
               />
@@ -157,7 +157,10 @@ export default function CheckoutStepPayment({
         </div>
       ) : (
         <div className="p-paypal-mock-msg">
-          <p>You have selected PayPal. Click continue to advance to the order summary confirmation page.</p>
+          <p>
+            You have selected PayPal. Click continue to advance to the order summary confirmation
+            page.
+          </p>
         </div>
       )}
 

@@ -3,7 +3,7 @@ import type { Preset, PresetId } from '../presets/registry';
 
 export function usePreset(): {
   activePreset: Preset;
-  changePreset: (presetId: PresetId) => void;
+  changePreset: (_presetId: PresetId) => void;
   presets: readonly Preset[];
 } {
   const { activePreset, changePreset, presets } = usePresetContext();

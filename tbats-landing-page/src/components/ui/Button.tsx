@@ -1,29 +1,31 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ElementType, ComponentPropsWithoutRef } from 'react';
 import styles from './Button.module.css';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps<T extends ElementType = 'button'> = {
+  as?: T;
   variant?: Variant;
   size?: Size;
-  children: ReactNode;
-}
+} & ComponentPropsWithoutRef<T>;
 
-export default function Button({
+export default function Button<T extends ElementType = 'button'>({
+  as,
   variant = 'primary',
   size = 'md',
   className,
   children,
   ...rest
-}: ButtonProps) {
+}: ButtonProps<T>) {
+  const Tag = as || 'button';
   const classes = [styles.button, styles[variant], styles[size], className]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <button className={classes} {...rest}>
+    <Tag className={classes} {...rest}>
       {children}
-    </button>
+    </Tag>
   );
 }

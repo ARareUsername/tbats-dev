@@ -12,7 +12,7 @@ export default function HeaderPlayful({ brandName }: BrandProps) {
 
   const handleCTA = (message: string) => {
     const event = new CustomEvent('show-toast', {
-      detail: { message, type: 'info' }
+      detail: { message, type: 'info' },
     });
     window.dispatchEvent(event);
   };
@@ -22,39 +22,53 @@ export default function HeaderPlayful({ brandName }: BrandProps) {
       <div className="p-header-container">
         <div className="p-header-brand">
           <span className="p-logo-emoji">{isBlog ? '💌' : isPortfolio ? '👋' : '✨'}</span>
-          <span className="p-logo-text">{brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')}</span>
+          <span className="p-logo-text">
+            {brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')}
+          </span>
         </div>
 
         <nav className="p-header-nav">
           {isBlog ? (
             <>
-              <a href="#sweet-deals" className="p-nav-pill">My Journal</a>
-              <a href="#flavors" className="p-nav-pill">Latest Posts</a>
+              <a href="#sweet-deals" className="p-nav-pill">
+                My Journal
+              </a>
+              <a href="#flavors" className="p-nav-pill">
+                Latest Posts
+              </a>
             </>
           ) : isPortfolio ? (
             <>
-              <a href="#sweet-deals" className="p-nav-pill">My Works</a>
-              <a href="#flavors" className="p-nav-pill">Fun Things</a>
+              <a href="#sweet-deals" className="p-nav-pill">
+                My Works
+              </a>
+              <a href="#flavors" className="p-nav-pill">
+                Fun Things
+              </a>
             </>
           ) : (
             <>
-              <a href="#sweet-deals" className="p-nav-pill">Sweet Deals</a>
-              <a href="#flavors" className="p-nav-pill">All Flavors</a>
+              <a href="#sweet-deals" className="p-nav-pill">
+                Sweet Deals
+              </a>
+              <a href="#flavors" className="p-nav-pill">
+                All Flavors
+              </a>
             </>
           )}
         </nav>
 
         {isBlog ? (
-          <button 
-            className="p-header-cart-btn" 
+          <button
+            className="p-header-cart-btn"
             onClick={() => handleCTA('Join the sweet letters! 💌')}
             style={{ borderRadius: '24px', padding: '0.4rem 1.2rem', fontWeight: 700 }}
           >
             Join 💌
           </button>
         ) : isPortfolio ? (
-          <button 
-            className="p-header-cart-btn" 
+          <button
+            className="p-header-cart-btn"
             onClick={() => handleCTA('Sending a warm wave... 👋')}
             style={{ borderRadius: '24px', padding: '0.4rem 1.2rem', fontWeight: 700 }}
           >

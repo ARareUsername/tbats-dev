@@ -8,7 +8,12 @@ interface DemoHeaderProps {
   onToggleMinimize: () => void;
 }
 
-export default function DemoHeader({ projectName, onToggleSidebar, isSidebarMinimized, onToggleMinimize }: DemoHeaderProps) {
+export default function DemoHeader({
+  projectName,
+  onToggleSidebar,
+  isSidebarMinimized,
+  onToggleMinimize,
+}: DemoHeaderProps) {
   const { state, toggleDrawer } = useCart();
   const { projectId } = useParams();
   const cartCount = state.items.reduce((total, item) => total + item.quantity, 0);
@@ -19,8 +24,8 @@ export default function DemoHeader({ projectName, onToggleSidebar, isSidebarMini
   return (
     <header className="demo-header">
       {/* Mobile Hamburger Toggle */}
-      <button 
-        className="demo-mobile-menu-btn" 
+      <button
+        className="demo-mobile-menu-btn"
         onClick={onToggleSidebar}
         aria-label="Toggle visual preset sidebar"
       >
@@ -29,8 +34,8 @@ export default function DemoHeader({ projectName, onToggleSidebar, isSidebarMini
 
       {/* Desktop Restore Button (Visible only when minimized on desktop) */}
       {isSidebarMinimized && (
-        <button 
-          className="demo-desktop-restore-btn" 
+        <button
+          className="demo-desktop-restore-btn"
           onClick={onToggleMinimize}
           aria-label="Restore sidebar"
           style={{
@@ -44,10 +49,10 @@ export default function DemoHeader({ projectName, onToggleSidebar, isSidebarMini
             justifyContent: 'center',
             marginRight: '1rem',
             borderRadius: '50%',
-            transition: 'background-color 0.2s ease'
+            transition: 'background-color 0.2s ease',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-border)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--color-border)')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
         >
           <span className="material-symbols-outlined">menu</span>
         </button>
@@ -66,17 +71,15 @@ export default function DemoHeader({ projectName, onToggleSidebar, isSidebarMini
           <span>Exit Sandbox</span>
           <span className="material-symbols-outlined">close</span>
         </Link>
-        
+
         {!isBlog && !isPortfolio && (
-          <button 
-            className="demo-cart-badge-trigger" 
+          <button
+            className="demo-cart-badge-trigger"
             onClick={toggleDrawer}
             aria-label="Open shopping cart"
           >
             <span className="material-symbols-outlined">shopping_bag</span>
-            {cartCount > 0 && (
-              <span className="demo-cart-badge-count">{cartCount}</span>
-            )}
+            {cartCount > 0 && <span className="demo-cart-badge-count">{cartCount}</span>}
           </button>
         )}
       </div>

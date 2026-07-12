@@ -28,6 +28,6 @@
       "@demo/*": ["src/demo/*"]
     }
   },
-  "include": ["src", "global.d.ts"],
+  "include": ["src", "app", "global.d.ts", "netlify"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

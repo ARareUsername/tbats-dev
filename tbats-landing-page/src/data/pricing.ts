@@ -65,7 +65,7 @@ export const carePlan: CarePlan = {
   price: '₱2,500/mo',
   desc: 'We host, update, and manage the backend so you never touch the tech.',
   benefits: [
-    'Never touch the tech — we host, update, and manage the backend.',
+    'Zero downtime — we handle uptime, security patches, and performance.',
     'Your site stays fast and secure as you grow.',
     'Real developers on call, in plain language — no ghosting.',
   ],

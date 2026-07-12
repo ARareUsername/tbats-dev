@@ -40,7 +40,7 @@ import FooterEditorial from './Footer/FooterEditorial';
 import FooterBold from './Footer/FooterBold';
 import FooterPlayful from './Footer/FooterPlayful';
 
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 
 export interface ComponentMap {
   HeaderMinimal: ComponentType<{ brandName?: string }>;
@@ -57,34 +57,34 @@ export interface ComponentMap {
 
   CategoryBarMinimal: ComponentType<{
     activeCategory: string;
-    onSelectCategory: (category: string) => void;
+    onSelectCategory: (_category: string) => void;
     categories: { name: string; slug: string }[];
   }>;
   CategoryBarLuxury: ComponentType<{
     activeCategory: string;
-    onSelectCategory: (category: string) => void;
+    onSelectCategory: (_category: string) => void;
     categories: { name: string; slug: string }[];
   }>;
   CategoryBarEditorial: ComponentType<{
     activeCategory: string;
-    onSelectCategory: (category: string) => void;
+    onSelectCategory: (_category: string) => void;
     categories: { name: string; slug: string }[];
   }>;
   CategoryBarBold: ComponentType<{
     activeCategory: string;
-    onSelectCategory: (category: string) => void;
+    onSelectCategory: (_category: string) => void;
     categories: { name: string; slug: string }[];
   }>;
   CategoryBarPlayful: ComponentType<{
     activeCategory: string;
-    onSelectCategory: (category: string) => void;
+    onSelectCategory: (_category: string) => void;
     categories: { name: string; slug: string }[];
   }>;
 
-  ProductGridGrid: ComponentType<{ children: React.ReactNode }>;
-  ProductGridMasonry: ComponentType<{ children: React.ReactNode }>;
-  ProductGridList: ComponentType<{ children: React.ReactNode }>;
-  ProductGridCarousel: ComponentType<{ children: React.ReactNode }>;
+  ProductGridGrid: ComponentType<{ children: ReactNode }>;
+  ProductGridMasonry: ComponentType<{ children: ReactNode }>;
+  ProductGridList: ComponentType<{ children: ReactNode }>;
+  ProductGridCarousel: ComponentType<{ children: ReactNode }>;
 
   ProductCardMinimal: ComponentType<{
     product: {
@@ -197,7 +197,6 @@ const componentMap: ComponentMap = {
   FooterPlayful,
 };
 
- 
 const typedComponentMap: Record<string, ComponentType<any>> = componentMap;
 
 export { typedComponentMap as ComponentMap };

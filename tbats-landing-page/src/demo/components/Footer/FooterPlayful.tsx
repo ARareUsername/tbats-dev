@@ -11,17 +11,22 @@ export default function FooterPlayful({ brandName }: BrandProps) {
       <div className="p-footer-container">
         <div className="p-footer-grid">
           <div className="p-footer-col">
-            <h5 className="p-footer-title">{isBlog ? '💌' : isPortfolio ? '🎨' : '🎈'} {brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')}</h5>
+            <h5 className="p-footer-title">
+              {isBlog ? '💌' : isPortfolio ? '🎨' : '🎈'}{' '}
+              {brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')}
+            </h5>
             <p className="p-footer-desc">
-              {isBlog 
+              {isBlog
                 ? 'Bouncy thoughts, colorful code playgrounds, and fun UI design systems!'
                 : isPortfolio
-                ? 'A cheerful playground of creative works, branding designs, and dynamic web apps!'
-                : 'Bouncy things and delightful candy-colored items to spice up your life!'}
+                  ? 'A cheerful playground of creative works, branding designs, and dynamic web apps!'
+                  : 'Bouncy things and delightful candy-colored items to spice up your life!'}
             </p>
           </div>
           <div className="p-footer-col">
-            <h6 className="p-footer-subtitle">{isBlog ? 'Explore' : isPortfolio ? 'Showcase' : 'Helper Corner'}</h6>
+            <h6 className="p-footer-subtitle">
+              {isBlog ? 'Explore' : isPortfolio ? 'Showcase' : 'Helper Corner'}
+            </h6>
             {isBlog ? (
               <>
                 <a href="#sweet-deals">Read Posts 📖</a>
@@ -34,14 +39,17 @@ export default function FooterPlayful({ brandName }: BrandProps) {
               </>
             ) : (
               <>
-                <a href="#track">Where\'s my goodies?</a>
+                <a href="#track">Where&apos;s my goodies?</a>
                 <a href="#help">Help Desk</a>
               </>
             )}
           </div>
         </div>
         <div className="p-footer-bottom">
-          <p>Made with 💖 by {brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')} 2026.</p>
+          <p>
+            Made with 💖 by{' '}
+            {brandName || (isBlog ? 'MY DIARY' : isPortfolio ? 'MY PORTFOLIO' : 'KANDY')} 2026.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,206 @@
+.section {
+  position: relative;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.editorialCard {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-dark-end);
+  border: 1px solid var(--border-color);
+  padding: 3.5rem 2.5rem;
+}
+
+.submittedOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.submittedIcon {
+  font-size: 4rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.submittedTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.submittedText {
+  color: var(--text-secondary);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: stretch;
+}
+
+.hoverAccent {
+  transition: color 0.3s ease;
+}
+
+.hoverAccent:hover {
+  color: var(--color-accent) !important;
+}
+
+@media (max-width: 900px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  text-align: left;
+}
+
+.infoLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.infoTitle {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.infoDesc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 450px;
+}
+
+.infoItemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.iconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.itemLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.itemLink {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.itemValue {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.itemValueAccent {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}
+
+/* Form section */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.formHeader {
+  margin-bottom: 0.5rem;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.formSubtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.formElement {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  gap: 1.5rem;
+}
+
+.selectOverride {
+  appearance: none;
+}
+
+.textareaOverride {
+  resize: vertical;
+}
+
+.errorMsg {
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.submitBtn {
+  margin-top: 1rem;
+  justify-content: center;
+}

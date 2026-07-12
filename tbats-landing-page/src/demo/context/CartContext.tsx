@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useReducer, useEffect, type ReactNode } from 'react';
 
 export interface CartItem {
@@ -19,9 +20,15 @@ export interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: { product: CartItem['product']; variant: CartItem['variant']; quantity?: number } }
+  | {
+      type: 'ADD_ITEM';
+      payload: { product: CartItem['product']; variant: CartItem['variant']; quantity?: number };
+    }
   | { type: 'REMOVE_ITEM'; payload: { productId: string; variant: CartItem['variant'] } }
-  | { type: 'UPDATE_QUANTITY'; payload: { productId: string; variant: CartItem['variant']; quantity: number } }
+  | {
+      type: 'UPDATE_QUANTITY';
+      payload: { productId: string; variant: CartItem['variant']; quantity: number };
+    }
   | { type: 'TOGGLE_DRAWER' }
   | { type: 'SET_DRAWER_OPEN'; payload: boolean }
   | { type: 'CLEAR_CART' };
@@ -38,7 +45,9 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case 'ADD_ITEM': {
       const { product, variant, quantity = 1 } = action.payload;
       const existingItemIndex = state.items.findIndex(
-        (item) => item.product.id === product.id && stringifyVariant(item.variant) === stringifyVariant(variant),
+        item =>
+          item.product.id === product.id &&
+          stringifyVariant(item.variant) === stringifyVariant(variant)
       );
 
       if (existingItemIndex > -1) {
@@ -58,7 +67,11 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       return {
         ...state,
         items: state.items.filter(
-          (item) => !(item.product.id === productId && stringifyVariant(item.variant) === stringifyVariant(variant)),
+          item =>
+            !(
+              item.product.id === productId &&
+              stringifyVariant(item.variant) === stringifyVariant(variant)
+            )
         ),
       };
     }
@@ -67,10 +80,11 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       if (quantity < 1) return state;
       return {
         ...state,
-        items: state.items.map((item) =>
-          item.product.id === productId && stringifyVariant(item.variant) === stringifyVariant(variant)
+        items: state.items.map(item =>
+          item.product.id === productId &&
+          stringifyVariant(item.variant) === stringifyVariant(variant)
             ? { ...item, quantity }
-            : item,
+            : item
         ),
       };
     }
@@ -90,11 +104,15 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
 interface CartContextValue {
   state: CartState;
-  addItem: (product: CartItem['product'], variant: CartItem['variant'], quantity?: number) => void;
-  removeItem: (productId: string, variant: CartItem['variant']) => void;
-  updateQuantity: (productId: string, variant: CartItem['variant'], quantity: number) => void;
+  addItem: (
+    _product: CartItem['product'],
+    _variant: CartItem['variant'],
+    _quantity?: number
+  ) => void;
+  removeItem: (_productId: string, _variant: CartItem['variant']) => void;
+  updateQuantity: (_productId: string, _variant: CartItem['variant'], _quantity: number) => void;
   toggleDrawer: () => void;
-  setDrawerOpen: (isOpen: boolean) => void;
+  setDrawerOpen: (_isOpen: boolean) => void;
   clearCart: () => void;
 }
 
@@ -105,7 +123,7 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [state, dispatch] = useReducer(cartReducer, initialState, (initial) => {
+  const [state, dispatch] = useReducer(cartReducer, initialState, initial => {
     try {
       const stored = localStorage.getItem('tbats-demo-cart');
       return stored ? { ...initial, items: JSON.parse(stored) } : initial;

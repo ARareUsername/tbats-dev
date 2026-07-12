@@ -1,0 +1,140 @@
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.memberRole {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.memberName {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.memberBio {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.cardFooter {
+  margin-top: auto;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.skillBadge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  text-transform: none;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.teamCard {
+  transition: var(--transition-smooth);
+}
+
+.span3 {
+  grid-column: span 3;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.teamAvatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.cardWrapper:hover .teamAvatar {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--bg-dark);
+  transform: scale(1.05);
+}
+
+.teamSocials {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.teamSocials a {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.teamSocials a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .span3,
+  .span2 {
+    grid-column: auto;
+  }
+}

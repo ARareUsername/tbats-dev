@@ -22,7 +22,10 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
 }
 
 body::before {
@@ -39,11 +42,18 @@ body::before {
   background-size: 100px 100px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.02em;
-  transition: font-family 0.5s ease, color 0.5s ease;
+  transition:
+    font-family 0.5s ease,
+    color 0.5s ease;
 }
 
 a {
@@ -87,7 +97,11 @@ a {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   padding: 2.5rem;
-  transition: var(--transition-smooth), background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  transition:
+    var(--transition-smooth),
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
 }
 
 .editorial-card:hover {
@@ -108,7 +122,11 @@ a {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  transition: var(--transition-smooth), background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  transition:
+    var(--transition-smooth),
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
 }
 
 .grid-2 {
@@ -127,7 +145,13 @@ a {
 .section-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-color) 20%,
+    var(--border-color) 80%,
+    transparent
+  );
   margin: 0;
 }
 
@@ -141,8 +165,16 @@ a {
   opacity: 1;
   background-image: radial-gradient(var(--grid-dot-color) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
-  mask-image: radial-gradient(circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), black 0%, transparent 250px);
-  -webkit-mask-image: radial-gradient(circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), black 0%, transparent 250px);
+  mask-image: radial-gradient(
+    circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    black 0%,
+    transparent 250px
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    black 0%,
+    transparent 250px
+  );
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   transition: opacity 0.3s ease;

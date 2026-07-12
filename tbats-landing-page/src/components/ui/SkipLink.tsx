@@ -5,7 +5,10 @@ interface SkipLinkProps {
   children?: string;
 }
 
-export default function SkipLink({ href = '#main', children = 'Skip to main content' }: SkipLinkProps) {
+export default function SkipLink({
+  href = '#main',
+  children = 'Skip to main content',
+}: SkipLinkProps) {
   return (
     <a href={href} className={styles.skipLink}>
       {children}

@@ -4,12 +4,13 @@ import type { CartItem } from '../../context/CartContext';
 import { useCart } from '../../context/CartContext';
 import ProductPlaceholder from '../UI/ProductPlaceholder';
 
-type CardProduct = ProductCardProps['product'] & Partial<{
-  readTime: string;
-  year: string;
-  date: string;
-  client: string;
-}>;
+type CardProduct = ProductCardProps['product'] &
+  Partial<{
+    readTime: string;
+    year: string;
+    date: string;
+    client: string;
+  }>;
 
 interface CardProps {
   product: CardProduct;
@@ -24,12 +25,12 @@ export default function ProductCardLuxury({ product, type }: CardProps) {
 
   const handleAddToCart = () => {
     addItem({ ...product }, selectedVariant as unknown as CartItem['variant'], 1);
-    
+
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `Added ${product.name} to cart.`,
-        type: 'success'
-      }
+        type: 'success',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -38,8 +39,8 @@ export default function ProductCardLuxury({ product, type }: CardProps) {
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `Opening article: "${product.name}"`,
-        type: 'info'
-      }
+        type: 'info',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -48,8 +49,8 @@ export default function ProductCardLuxury({ product, type }: CardProps) {
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `Opening project: "${product.name}"`,
-        type: 'info'
-      }
+        type: 'info',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -77,31 +78,36 @@ export default function ProductCardLuxury({ product, type }: CardProps) {
           )}
         </div>
       </div>
-      
+
       <div className="p-card-info">
         <h4 className="p-card-title">{product.name}</h4>
-        
+
         {isBlog || isPortfolio ? (
           <div>
             <div className="p-card-meta-row" style={{ marginTop: '0.25rem' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-secondary)' }}>
                 {isBlog ? product.date : product.client}
               </span>
-              <span className="p-card-price" style={{ fontSize: '0.75rem', color: 'var(--color-primary)' }}>
+              <span
+                className="p-card-price"
+                style={{ fontSize: '0.75rem', color: 'var(--color-primary)' }}
+              >
                 {isBlog ? product.readTime : product.year}
               </span>
             </div>
-            <p style={{ 
-              fontSize: '0.8rem', 
-              color: 'var(--color-secondary)', 
-              marginTop: '0.5rem',
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-              minHeight: '2.4rem',
-              lineHeight: '1.2rem'
-            }}>
+            <p
+              style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-secondary)',
+                marginTop: '0.5rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                minHeight: '2.4rem',
+                lineHeight: '1.2rem',
+              }}
+            >
               {product.description}
             </p>
           </div>
@@ -109,17 +115,21 @@ export default function ProductCardLuxury({ product, type }: CardProps) {
           <div className="p-card-meta-row">
             {product.variants && product.variants.length > 0 ? (
               <div className="p-card-select-wrap">
-                <select 
-                  value={selectedVariant || ''} 
-                  onChange={(e) => setSelectedVariant(e.target.value)}
+                <select
+                  value={selectedVariant || ''}
+                  onChange={e => setSelectedVariant(e.target.value)}
                   className="p-card-select-dropdown"
                 >
-                  {product.variants.map((v) => (
-                    <option key={v} value={v}>{v}</option>
+                  {product.variants.map(v => (
+                    <option key={v} value={v}>
+                      {v}
+                    </option>
                   ))}
                 </select>
               </div>
-            ) : <div />}
+            ) : (
+              <div />
+            )}
             <span className="p-card-price">₱{product.price.toLocaleString()}</span>
           </div>
         )}
