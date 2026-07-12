@@ -41,11 +41,6 @@ export default function MainLandingPage({ theme, setTheme }: MainLandingPageProp
       
       <div className="section-divider" />
       <ScrollReveal>
-        <Team />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <ScrollReveal>
         <Portfolio />
       </ScrollReveal>
 
@@ -56,7 +51,17 @@ export default function MainLandingPage({ theme, setTheme }: MainLandingPageProp
 
       <div className="section-divider" />
       <ScrollReveal>
+        <ConsultationForm />
+      </ScrollReveal>
+
+      <div className="section-divider" />
+      <ScrollReveal>
         <InteractiveEstimator />
+      </ScrollReveal>
+
+      <div className="section-divider" />
+      <ScrollReveal>
+        <Team />
       </ScrollReveal>
 
       <div className="section-divider" />
@@ -67,11 +72,6 @@ export default function MainLandingPage({ theme, setTheme }: MainLandingPageProp
       <div className="section-divider" />
       <ScrollReveal>
         <FAQAccordion />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <ScrollReveal>
-        <ConsultationForm />
       </ScrollReveal>
 
       <div className="section-divider" />
