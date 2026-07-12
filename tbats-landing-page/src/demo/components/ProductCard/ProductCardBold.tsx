@@ -4,12 +4,13 @@ import type { CartItem } from '../../context/CartContext';
 import { useCart } from '../../context/CartContext';
 import ProductPlaceholder from '../UI/ProductPlaceholder';
 
-type CardProduct = ProductCardProps['product'] & Partial<{
-  readTime: string;
-  year: string;
-  date: string;
-  client: string;
-}>;
+type CardProduct = ProductCardProps['product'] &
+  Partial<{
+    readTime: string;
+    year: string;
+    date: string;
+    client: string;
+  }>;
 
 interface CardProps {
   product: CardProduct;
@@ -24,12 +25,12 @@ export default function ProductCardBold({ product, type }: CardProps) {
 
   const handleAddToCart = () => {
     addItem({ ...product }, selectedVariant as unknown as CartItem['variant'], 1);
-    
+
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `ADDED ${product.name.toUpperCase()}!`,
-        type: 'success'
-      }
+        type: 'success',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -38,8 +39,8 @@ export default function ProductCardBold({ product, type }: CardProps) {
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `OPENING: "${product.name.toUpperCase()}"`,
-        type: 'info'
-      }
+        type: 'info',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -48,8 +49,8 @@ export default function ProductCardBold({ product, type }: CardProps) {
     const event = new CustomEvent('show-toast', {
       detail: {
         message: `OPENING: "${product.name.toUpperCase()}"`,
-        type: 'info'
-      }
+        type: 'info',
+      },
     });
     window.dispatchEvent(event);
   };
@@ -62,30 +63,35 @@ export default function ProductCardBold({ product, type }: CardProps) {
       <div className="p-card-img-wrap">
         <ProductPlaceholder name={product.name} category={product.category} />
       </div>
-      
+
       <div className="p-card-info">
         <h4 className="p-card-title">{product.name.toUpperCase()}</h4>
-        
+
         {isBlog || isPortfolio ? (
           <div>
-            <p style={{ 
-              fontSize: '0.8rem', 
-              color: 'var(--color-secondary)', 
-              margin: '0.5rem 0 1rem 0',
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-              minHeight: '2.4rem',
-              lineHeight: '1.2rem'
-            }}>
+            <p
+              style={{
+                fontSize: '0.8rem',
+                color: 'var(--color-secondary)',
+                margin: '0.5rem 0 1rem 0',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                minHeight: '2.4rem',
+                lineHeight: '1.2rem',
+              }}
+            >
               {product.description}
             </p>
             <div className="p-card-action-row">
               <span className="p-card-price" style={{ fontSize: '0.8rem', fontWeight: 900 }}>
-                 {isBlog ? product.readTime?.toUpperCase() : product.year}
+                {isBlog ? product.readTime?.toUpperCase() : product.year}
               </span>
-              <button className="p-card-add-btn" onClick={isBlog ? handleReadArticle : handleViewProject}>
+              <button
+                className="p-card-add-btn"
+                onClick={isBlog ? handleReadArticle : handleViewProject}
+              >
                 {isBlog ? 'READ POST' : 'VIEW CASE'}
               </button>
             </div>
@@ -94,7 +100,7 @@ export default function ProductCardBold({ product, type }: CardProps) {
           <>
             {product.variants && product.variants.length > 0 && (
               <div className="p-card-variants">
-                {product.variants.map((v) => (
+                {product.variants.map(v => (
                   <button
                     key={v}
                     className={`p-card-variant-btn ${selectedVariant === v ? 'active' : ''}`}

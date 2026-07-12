@@ -11,17 +11,22 @@ export default function FooterEditorial({ brandName }: BrandProps) {
       <div className="p-footer-container">
         <div className="p-footer-grid">
           <div className="p-footer-col-large">
-            <h5 className="p-footer-title">{brandName || (isBlog ? 'KROMA WRITES' : isPortfolio ? 'KROMA EXHIBIT' : 'KROMA')} / {isBlog ? 'JOURNAL' : isPortfolio ? 'ARCHIVE' : 'COLLECTIONS'}</h5>
+            <h5 className="p-footer-title">
+              {brandName || (isBlog ? 'KROMA WRITES' : isPortfolio ? 'KROMA EXHIBIT' : 'KROMA')} /{' '}
+              {isBlog ? 'JOURNAL' : isPortfolio ? 'ARCHIVE' : 'COLLECTIONS'}
+            </h5>
             <p className="p-footer-desc">
-              {isBlog 
+              {isBlog
                 ? 'Receive weekly dispatches of our latest articles and tech thoughts.'
                 : isPortfolio
-                ? 'Subscribe to get updates on recent case studies and development logs.'
-                : 'Receive weekly dispatches of physical design essays and shop drops.'}
+                  ? 'Subscribe to get updates on recent case studies and development logs.'
+                  : 'Receive weekly dispatches of physical design essays and shop drops.'}
             </p>
-            <form className="p-footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="p-footer-newsletter-form" onSubmit={e => e.preventDefault()}>
               <input type="email" placeholder="YOUR EMAIL ADDRESS" className="p-footer-input" />
-              <button type="submit" className="p-footer-submit-btn">SUBMIT</button>
+              <button type="submit" className="p-footer-submit-btn">
+                SUBMIT
+              </button>
             </form>
           </div>
           <div className="p-footer-col">
@@ -48,7 +53,11 @@ export default function FooterEditorial({ brandName }: BrandProps) {
           </div>
         </div>
         <div className="p-footer-bottom">
-          <p>© 2026 {brandName || (isBlog ? 'KROMA WRITES' : isPortfolio ? 'KROMA EXHIBIT' : 'KROMA')} Studio. Published in San Francisco.</p>
+          <p>
+            © 2026{' '}
+            {brandName || (isBlog ? 'KROMA WRITES' : isPortfolio ? 'KROMA EXHIBIT' : 'KROMA')}{' '}
+            Studio. Published in San Francisco.
+          </p>
         </div>
       </div>
     </footer>

@@ -47,28 +47,24 @@ export default function CartDrawer({ onProceedToCheckout }: { onProceedToCheckou
   return (
     <div className={`p-cart-drawer-container ${isDrawerOpen ? 'active' : ''}`}>
       {/* Backdrop Overlay */}
-      <div 
+      <div
         className="p-cart-drawer-overlay"
         onClick={toggleDrawer}
         role="button"
         tabIndex={-1}
         aria-label="Close cart drawer"
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') {
             toggleDrawer();
           }
         }}
       />
-      
+
       {/* Panel */}
       <aside className="p-cart-drawer-panel">
         <header className="p-cart-drawer-header">
           <h3>Shopping Bag</h3>
-          <button 
-            className="p-cart-drawer-close"
-            onClick={toggleDrawer}
-            aria-label="Close cart"
-          >
+          <button className="p-cart-drawer-close" onClick={toggleDrawer} aria-label="Close cart">
             <span className="material-symbols-outlined">close</span>
           </button>
         </header>
@@ -86,9 +82,9 @@ export default function CartDrawer({ onProceedToCheckout }: { onProceedToCheckou
             {/* Scrollable Items List */}
             <div className="p-cart-items-list">
               {items.map((item, idx) => (
-                <CartItem 
-                  key={`${item.product.id}-${JSON.stringify(item.variant)}-${idx}`} 
-                  item={item} 
+                <CartItem
+                  key={`${item.product.id}-${JSON.stringify(item.variant)}-${idx}`}
+                  item={item}
                 />
               ))}
             </div>
@@ -111,7 +107,7 @@ export default function CartDrawer({ onProceedToCheckout }: { onProceedToCheckou
                 <span>Total</span>
                 <span>₱{orderTotal.toLocaleString()}</span>
               </div>
-              
+
               <button className="p-cart-checkout-btn" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>

@@ -10,14 +10,27 @@ interface DemoSidebarProps {
   onToggleMinimize: () => void;
 }
 
-export default function DemoSidebar({ isOpen, projectName, isMinimized, onToggleMinimize }: DemoSidebarProps) {
+export default function DemoSidebar({
+  isOpen,
+  projectName,
+  isMinimized,
+  onToggleMinimize,
+}: DemoSidebarProps) {
   const { activePreset, changePreset, presets } = usePreset();
 
   return (
     <aside className={`demo-sidebar ${isOpen ? 'open' : ''} ${isMinimized ? 'minimized' : ''}`}>
       {/* Back to Home & Sandbox Header */}
       <div className="demo-sidebar-header" style={{ position: 'relative' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem',
+            alignItems: 'flex-start',
+            marginBottom: '1.25rem',
+          }}
+        >
           <Link to="/" className="demo-back-home-link" style={{ marginBottom: 0 }}>
             <span className="material-symbols-outlined">arrow_back</span>
             <span>Back to Portfolio</span>
@@ -29,12 +42,14 @@ export default function DemoSidebar({ isOpen, projectName, isMinimized, onToggle
         </div>
 
         {/* Minimize Button */}
-        <button 
+        <button
           onClick={onToggleMinimize}
           className="demo-sidebar-minimize-btn"
           aria-label="Minimize sidebar"
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>menu_open</span>
+          <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>
+            menu_open
+          </span>
         </button>
 
         <h2 className="demo-project-title">{projectName || 'E-Commerce'}</h2>

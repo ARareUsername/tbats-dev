@@ -2,6 +2,8 @@
 
 /// <reference types="vite/client" />
 /// <reference types="@emailjs/browser" />
+/// <reference types="vitest" />
+/// <reference types="@testing-library/jest-dom/vitest" />
 
 declare module '*.css' {
   const content: { [className: string]: string };

@@ -8,7 +8,13 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   as?: 'div' | 'article' | 'section';
 }
 
-export default function Card({ variant = 'editorial', as = 'div', className, children, ...rest }: CardProps) {
+export default function Card({
+  variant = 'editorial',
+  as = 'div',
+  className,
+  children,
+  ...rest
+}: CardProps) {
   const Tag = as;
   const classes = [styles.card, styles[variant], className].filter(Boolean).join(' ');
   return (

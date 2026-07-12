@@ -7,7 +7,7 @@ export default function CheckoutStepConfirm({
   paymentData,
   isSubmitting,
   onPlaceOrder,
-  onBack
+  onBack,
 }: {
   shippingData: ShippingData;
   paymentData: PaymentData;
@@ -26,7 +26,7 @@ export default function CheckoutStepConfirm({
   return (
     <div className="p-checkout-confirm-step">
       <h4 className="p-checkout-step-title">Review & Place Order</h4>
-      
+
       {/* Scrollable Summary List */}
       <div className="p-confirm-review-section">
         <h5>Order Details</h5>
@@ -35,8 +35,14 @@ export default function CheckoutStepConfirm({
             <div key={`${item.product.id}-${idx}`} className="p-confirm-item-row">
               <span className="p-confirm-item-qty">{item.quantity}x</span>
               <span className="p-confirm-item-name">{item.product.name}</span>
-              {item.variant && <span className="p-confirm-item-variant">({item.variant as unknown as string})</span>}
-              <span className="p-confirm-item-price">₱{(item.product.price * item.quantity).toLocaleString()}</span>
+              {item.variant && (
+                <span className="p-confirm-item-variant">
+                  ({item.variant as unknown as string})
+                </span>
+              )}
+              <span className="p-confirm-item-price">
+                ₱{(item.product.price * item.quantity).toLocaleString()}
+              </span>
             </div>
           ))}
         </div>
@@ -48,11 +54,13 @@ export default function CheckoutStepConfirm({
           <h5>Shipping Address</h5>
           <p>{shippingData.name}</p>
           <p>{shippingData.address}</p>
-          <p>{shippingData.city}, {shippingData.zip}</p>
+          <p>
+            {shippingData.city}, {shippingData.zip}
+          </p>
           <p>{shippingData.country}</p>
           <p>{shippingData.phone}</p>
         </div>
-        
+
         <div className="p-confirm-details-col">
           <h5>Payment Details</h5>
           {paymentData.method === 'card' ? (
@@ -84,17 +92,17 @@ export default function CheckoutStepConfirm({
       </div>
 
       <footer className="p-checkout-form-actions">
-        <button 
-          type="button" 
-          className="p-checkout-btn-back" 
+        <button
+          type="button"
+          className="p-checkout-btn-back"
           onClick={onBack}
           disabled={isSubmitting}
         >
           Back
         </button>
-        <button 
-          type="button" 
-          className="p-checkout-btn-confirm" 
+        <button
+          type="button"
+          className="p-checkout-btn-confirm"
           onClick={onPlaceOrder}
           disabled={isSubmitting}
         >
@@ -103,7 +111,9 @@ export default function CheckoutStepConfirm({
               <span className="p-checkout-spinner"></span>
               <span>Processing...</span>
             </div>
-          ) : 'Place Order'}
+          ) : (
+            'Place Order'
+          )}
         </button>
       </footer>
     </div>

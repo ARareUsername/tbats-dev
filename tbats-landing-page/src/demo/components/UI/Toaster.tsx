@@ -27,18 +27,20 @@ export default function Toaster() {
       const detail = e as CustomEvent<ShowToastDetail>;
       const { message, type = 'success' } = detail.detail;
       const id = Date.now() + Math.random().toString();
-      
+
       const newToast: Toast = {
         id,
         message,
         type,
-        action: message.toLowerCase().includes('added') ? {
-          label: 'View Bag',
-          onClick: () => {
-            toggleDrawer();
-            removeToast(id);
-          }
-        } : null
+        action: message.toLowerCase().includes('added')
+          ? {
+              label: 'View Bag',
+              onClick: () => {
+                toggleDrawer();
+                removeToast(id);
+              },
+            }
+          : null,
       };
 
       setToasts(prev => [...prev, newToast]);
@@ -61,7 +63,7 @@ export default function Toaster() {
 
   return (
     <div className="p-toaster-container">
-      {toasts.map((toast) => (
+      {toasts.map(toast => (
         <div key={toast.id} className={`p-toast ${toast.type}`}>
           <div className="p-toast-content">
             <span className="material-symbols-outlined p-toast-icon">

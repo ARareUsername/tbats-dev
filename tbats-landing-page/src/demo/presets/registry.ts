@@ -1,23 +1,10 @@
-export type PresetId =
-  | 'minimal'
-  | 'dark-luxury'
-  | 'editorial'
-  | 'bold'
-  | 'playful';
+export type PresetId = 'minimal' | 'dark-luxury' | 'editorial' | 'bold' | 'playful';
 
 export type HeaderVariant =
-  | 'HeaderMinimal'
-  | 'HeaderLuxury'
-  | 'HeaderEditorial'
-  | 'HeaderBold'
-  | 'HeaderPlayful';
+  'HeaderMinimal' | 'HeaderLuxury' | 'HeaderEditorial' | 'HeaderBold' | 'HeaderPlayful';
 
 export type HeroVariant =
-  | 'HeroMinimal'
-  | 'HeroLuxury'
-  | 'HeroEditorial'
-  | 'HeroBold'
-  | 'HeroPlayful';
+  'HeroMinimal' | 'HeroLuxury' | 'HeroEditorial' | 'HeroBold' | 'HeroPlayful';
 
 export type CategoryBarVariant =
   | 'CategoryBarMinimal'
@@ -27,10 +14,7 @@ export type CategoryBarVariant =
   | 'CategoryBarPlayful';
 
 export type ProductGridVariant =
-  | 'ProductGridGrid'
-  | 'ProductGridMasonry'
-  | 'ProductGridList'
-  | 'ProductGridCarousel';
+  'ProductGridGrid' | 'ProductGridMasonry' | 'ProductGridList' | 'ProductGridCarousel';
 
 export type ProductCardVariant =
   | 'ProductCardMinimal'
@@ -40,11 +24,7 @@ export type ProductCardVariant =
   | 'ProductCardPlayful';
 
 export type FooterVariant =
-  | 'FooterMinimal'
-  | 'FooterLuxury'
-  | 'FooterEditorial'
-  | 'FooterBold'
-  | 'FooterPlayful';
+  'FooterMinimal' | 'FooterLuxury' | 'FooterEditorial' | 'FooterBold' | 'FooterPlayful';
 
 export interface PresetComponents {
   Header: HeaderVariant;
@@ -270,5 +250,4 @@ export const presets: readonly Preset[] = [
   },
 ] as const;
 
-export const getPresetById = (id: PresetId): Preset =>
-  presets.find((p) => p.id === id)!;
+export const getPresetById = (id: PresetId): Preset => presets.find(p => p.id === id)!;

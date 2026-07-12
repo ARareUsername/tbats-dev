@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import useReducedMotion from '@hooks/useReducedMotion';
 
 interface CustomCursorProps {
   theme: 'light' | 'dark';
@@ -7,61 +9,42 @@ interface CustomCursorProps {
 export default function CustomCursor({ theme }: CustomCursorProps) {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
-  const mousePosition = useRef({ x: -100, y: -100 });
-  const currentPosition = useRef({ x: -100, y: -100 });
-  const isHoveredRef = useRef(false);
+  // Motion values for positions
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  // Smooth springs for cursor lag
+  const springConfig = { damping: 12, stiffness: 300, mass: 0.2 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  // Motion value and transform for scale animation
+  const hoverProgress = useMotionValue(0);
+  const scale = useTransform(hoverProgress, [0, 1], [1, 1.4]);
 
   useEffect(() => {
-    isHoveredRef.current = isHovered;
-  }, [isHovered]);
+    hoverProgress.set(isHovered ? 1 : 0);
+  }, [isHovered, hoverProgress]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     if (window.matchMedia('(pointer: coarse)').matches) {
       setIsTouchDevice(true);
       return;
     }
 
-    let animationFrameId: number;
-    let firstMove = true;
-
+    let lastTime = 0;
     const moveCursor = (e: MouseEvent) => {
-      const targetX = e.clientX - 16;
-      const targetY = e.clientY - 16;
+      const now = window.performance.now();
+      // Throttle mousemove events to 60fps (approx 16.7ms intervals)
+      if (now - lastTime < 16) return;
+      lastTime = now;
 
-      if (firstMove) {
-        currentPosition.current.x = targetX;
-        currentPosition.current.y = targetY;
-        mousePosition.current.x = targetX;
-        mousePosition.current.y = targetY;
-        if (cursorRef.current) {
-          cursorRef.current.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) scale(1)`;
-          cursorRef.current.style.opacity = '1';
-        }
-        firstMove = false;
-      } else {
-        mousePosition.current.x = targetX;
-        mousePosition.current.y = targetY;
-      }
-    };
-
-    const handleMouseLeave = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.opacity = '0';
-      }
-    };
-
-    const handleMouseEnter = (e: MouseEvent) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.opacity = '1';
-        const targetX = e.clientX - 16;
-        const targetY = e.clientY - 16;
-        currentPosition.current.x = targetX;
-        currentPosition.current.y = targetY;
-        mousePosition.current.x = targetX;
-        mousePosition.current.y = targetY;
-      }
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -80,79 +63,52 @@ export default function CustomCursor({ theme }: CustomCursorProps) {
       }
     };
 
-    const updatePosition = () => {
-      const ease = 0.35;
-      currentPosition.current.x += (mousePosition.current.x - currentPosition.current.x) * ease;
-      currentPosition.current.y += (mousePosition.current.y - currentPosition.current.y) * ease;
-
-      const scaleVal = isHoveredRef.current ? 'scale(1.4)' : 'scale(1)';
-
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${currentPosition.current.x}px, ${currentPosition.current.y}px, 0) ${scaleVal}`;
-      }
-
-      animationFrameId = requestAnimationFrame(updatePosition);
-    };
-
     window.addEventListener('mousemove', moveCursor);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
-    animationFrameId = requestAnimationFrame(updatePosition);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
-      cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [cursorX, cursorY]);
 
-  if (isTouchDevice) return null;
+  if (isTouchDevice || prefersReducedMotion) return null;
 
   const isLight = theme === 'light';
 
   return (
-    <div
-      ref={cursorRef}
+    <m.div
       style={{
         position: 'fixed',
         left: 0,
         top: 0,
-        width: '32px',
-        height: '32px',
+        width: '20px',
+        height: '20px',
         borderRadius: '50%',
         backgroundColor: isHovered
-          ? 'rgba(255, 255, 255, 0.95)'
+          ? 'rgba(255, 255, 255, 1)'
           : isLight
-          ? 'rgba(5, 150, 105, 0.2)'
-          : 'rgba(16, 185, 129, 0.15)',
+            ? 'rgba(5, 150, 105, 0.9)'
+            : 'rgba(16, 185, 129, 0.9)',
         boxShadow: isHovered
-          ? 'none'
-          : isLight
-          ? 'none'
-          : '0 0 20px 10px rgba(16, 185, 129, 0.1)',
-        border: isHovered
+          ? '0 0 0 4px rgba(5, 150, 105, 0.3)'
+          : '0 0 0 6px rgba(5, 150, 105, 0.15)',
+        outline: isHovered
           ? isLight
-            ? '1px solid rgba(0, 0, 0, 0.9)'
-            : '1px solid rgba(255, 255, 255, 0.9)'
-          : isLight
-          ? '1px solid rgba(5, 150, 105, 0.4)'
-          : '1px solid rgba(16, 185, 129, 0.3)',
+            ? '1.5px solid rgba(0, 0, 0, 0.8)'
+            : '1.5px solid rgba(255, 255, 255, 0.8)'
+          : `1.5px solid ${isLight ? 'rgba(5, 150, 105, 0.6)' : 'rgba(16, 185, 129, 0.6)'}`,
+        outlineOffset: '2px',
         pointerEvents: 'none',
         zIndex: 9999,
-        mixBlendMode: isHovered
-          ? 'difference'
-          : isLight
-          ? 'normal'
-          : 'screen',
-        transform: 'translate3d(-100px, -100px, 0) scale(1)',
-        opacity: 0,
-        transition: 'opacity 0.25s ease-out, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
-        willChange: 'transform',
+        mixBlendMode: isHovered ? 'difference' : 'normal',
+        x: cursorXSpring,
+        y: cursorYSpring,
+        scale,
+        transition:
+          'background-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
       }}
     />
   );

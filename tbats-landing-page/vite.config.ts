@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react';
+import { reactRouter } from '@react-router/dev/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import viteImagemin from 'vite-plugin-imagemin';
 import path from 'path';
@@ -10,13 +10,7 @@ export default defineConfig(({ mode, command }) => {
 
   return {
     plugins: [
-      react({
-        babel: {
-          plugins: [
-            ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
-          ],
-        },
-      }),
+      reactRouter(),
       isAnalyze &&
         visualizer({
           open: false,
@@ -65,9 +59,13 @@ export default defineConfig(({ mode, command }) => {
       sourcemap: true,
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
+          manualChunks: id => {
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              if (
+                id.includes('react') ||
+                id.includes('react-dom') ||
+                id.includes('react-router-dom')
+              ) {
                 return 'vendor-react';
               }
               if (id.includes('framer-motion')) {
@@ -78,13 +76,16 @@ export default defineConfig(({ mode, command }) => {
               }
               return 'vendor-other';
             }
-            if (id.includes('src/demo/presets/registry') || id.includes('src/demo/components/index')) {
+            if (
+              id.includes('src/demo/presets/registry') ||
+              id.includes('src/demo/components/index')
+            ) {
               return 'demo-presets';
             }
           },
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: (assetInfo) => {
+          assetFileNames: assetInfo => {
             const info = assetInfo.name.split('.');
             const ext = info[info.length - 1];
             if (/\.(png|jpe?g|gif|svg|webp|avif|woff2?)$/.test(assetInfo.name)) {
@@ -103,7 +104,7 @@ export default defineConfig(({ mode, command }) => {
       chunkSizeWarningLimit: 500,
     },
     optimizeDeps: {
-      include: ['framer-motion', '@emailjs/browser', 'react-router-dom'],
+      include: ['framer-motion', '@emailjs/browser', 'react-router'],
     },
     esbuild: {
       logOverride: { 'this-is-undefined-in-esm': 'silent' },

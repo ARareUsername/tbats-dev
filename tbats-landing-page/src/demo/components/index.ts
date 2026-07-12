@@ -197,7 +197,6 @@ const componentMap: ComponentMap = {
   FooterPlayful,
 };
 
- 
 const typedComponentMap: Record<string, ComponentType<any>> = componentMap;
 
 export { typedComponentMap as ComponentMap };

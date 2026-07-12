@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import type { Preset, PresetId} from '../presets/registry';
+import type { Preset, PresetId } from '../presets/registry';
 import { presets, getPresetById } from '../presets/registry';
 
 interface PresetContextValue {
@@ -22,7 +22,7 @@ export function PresetProvider({ children, defaultPresetId = 'minimal' }: Preset
 
   const getInitialPresetId = (): PresetId => {
     const urlPreset = searchParams.get('preset');
-    if (urlPreset && presets.some((p) => p.id === urlPreset)) {
+    if (urlPreset && presets.some(p => p.id === urlPreset)) {
       return urlPreset as PresetId;
     }
     return defaultPresetId;
@@ -34,7 +34,7 @@ export function PresetProvider({ children, defaultPresetId = 'minimal' }: Preset
 
   useEffect(() => {
     const urlPreset = searchParams.get('preset');
-    if (urlPreset && presets.some((p) => p.id === urlPreset)) {
+    if (urlPreset && presets.some(p => p.id === urlPreset)) {
       if (urlPreset !== activePresetId) {
         setActivePresetId(urlPreset as PresetId);
       }
@@ -45,7 +45,7 @@ export function PresetProvider({ children, defaultPresetId = 'minimal' }: Preset
 
   const changePreset = (presetId: PresetId) => {
     setActivePresetId(presetId);
-    setSearchParams((prev) => {
+    setSearchParams(prev => {
       const nextParams = new URLSearchParams(prev);
       nextParams.set('preset', presetId);
       return nextParams;

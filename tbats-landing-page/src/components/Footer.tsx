@@ -1,62 +1,62 @@
+import Container from '@components/ui/Container';
+import styles from './Footer.module.css';
+
 export default function Footer() {
   return (
-    <footer style={{ 
-      borderTop: '1px solid var(--border-color)', 
-      padding: '4rem 0 2rem 0',
-      background: 'var(--footer-bg)',
-      marginTop: '4rem'
-    }}>
-      <div className="container">
+    <footer className={styles.footer}>
+      <Container>
         <div className="grid-2" style={{ alignItems: 'start', gap: '2rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span className="material-symbols-outlined" style={{ color: 'var(--color-accent)', fontSize: '24px' }}>
-                code_blocks
-              </span>
-              <span style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'var(--font-serif)' }}>
-                tbats<span style={{ color: 'var(--color-accent)' }}>.dev</span>
+            <div className={styles.logoContainer}>
+              <span className={`material-symbols-outlined ${styles.logoIcon}`}>code_blocks</span>
+              <span className={styles.logoText}>
+                tbats<span className={styles.logoDot}>.dev</span>
               </span>
             </div>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '300px', fontSize: '0.9rem' }}>
-              Premium web development and design agency helping businesses build high-converting, visually stunning digital experiences.
+            <p className={styles.description}>
+              Premium web development and design agency helping businesses build high-converting,
+              visually stunning digital experiences.
             </p>
           </div>
-          
-          <div className="footer-links" style={{ display: 'flex', gap: '4rem', justifyContent: 'flex-end' }}>
+
+          <div className={styles.links}>
             <div>
-              <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1rem' }}>Company</h4>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <li><a href="#about" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }}>About Us</a></li>
-                <li><a href="#process" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }}>Our Process</a></li>
-                <li><a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }}>Pricing</a></li>
+              <h4 className={styles.linksTitle}>Company</h4>
+              <ul className={styles.linksList}>
+                <li>
+                  <a href="#about" className={styles.link}>
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#process" className={styles.link}>
+                    Our Process
+                  </a>
+                </li>
+                <li>
+                  <a href="#pricing" className={styles.link}>
+                    Pricing
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '1rem' }}>Contact</h4>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <li style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>hello@tbats.dev</li>
-                <li style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Pampanga, Philippines</li>
+              <h4 className={styles.linksTitle}>Contact</h4>
+              <ul className={styles.linksList}>
+                <li className={styles.linkItem}>hello@tbats.dev</li>
+                <li className={styles.linkItem}>Pampanga, Philippines</li>
               </ul>
             </div>
           </div>
         </div>
-        
-        <div className="footer-bottom" style={{ 
-          marginTop: '4rem', 
-          paddingTop: '2rem', 
-          borderTop: '1px solid var(--footer-border)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          color: 'var(--text-secondary)',
-          fontSize: '0.85rem'
-        }}>
+
+        <div className={styles.bottom}>
           <p>&copy; {new Date().getFullYear()} TBATS Dev. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <span className="material-symbols-outlined" style={{ cursor: 'pointer' }}>language</span>
+            <span className={`material-symbols-outlined ${styles.icon}`}>language</span>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

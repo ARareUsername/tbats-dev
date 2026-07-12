@@ -13,28 +13,30 @@ export interface ShippingData {
 export default function CheckoutStepShipping({
   data,
   onNext,
-  onCancel
+  onCancel,
 }: {
   data: ShippingData | null;
   onNext: (_d: ShippingData) => void;
   onCancel: () => void;
 }) {
-  const [formData, setFormData] = useState<ShippingData>(data || {
-    name: '',
-    email: '',
-    address: '',
-    city: '',
-    zip: '',
-    country: '',
-    phone: ''
-  });
-  
+  const [formData, setFormData] = useState<ShippingData>(
+    data || {
+      name: '',
+      email: '',
+      address: '',
+      city: '',
+      zip: '',
+      country: '',
+      phone: '',
+    }
+  );
+
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
     const nextErrors: Record<string, string> = {};
     if (!formData.name.trim()) nextErrors.name = 'Name is required';
-    
+
     if (!formData.email.trim()) {
       nextErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -76,15 +78,15 @@ export default function CheckoutStepShipping({
   return (
     <form className="p-checkout-form" onSubmit={handleSubmit}>
       <h4 className="p-checkout-step-title">Shipping Address</h4>
-      
+
       <div className="p-form-group">
         <label htmlFor="name">Full Name *</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          value={formData.name} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           className={errors.name ? 'error' : ''}
           placeholder="John Doe"
         />
@@ -93,12 +95,12 @@ export default function CheckoutStepShipping({
 
       <div className="p-form-group">
         <label htmlFor="email">Email Address *</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          value={formData.email} 
-          onChange={handleChange} 
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
           className={errors.email ? 'error' : ''}
           placeholder="johndoe@example.com"
         />
@@ -107,12 +109,12 @@ export default function CheckoutStepShipping({
 
       <div className="p-form-group">
         <label htmlFor="address">Street Address *</label>
-        <input 
-          type="text" 
-          id="address" 
-          name="address" 
-          value={formData.address} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
           className={errors.address ? 'error' : ''}
           placeholder="123 Design St"
         />
@@ -122,12 +124,12 @@ export default function CheckoutStepShipping({
       <div className="p-form-row">
         <div className="p-form-group">
           <label htmlFor="city">City *</label>
-          <input 
-            type="text" 
-            id="city" 
-            name="city" 
-            value={formData.city} 
-            onChange={handleChange} 
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
             className={errors.city ? 'error' : ''}
             placeholder="San Francisco"
           />
@@ -135,12 +137,12 @@ export default function CheckoutStepShipping({
         </div>
         <div className="p-form-group">
           <label htmlFor="zip">ZIP / Postal Code *</label>
-          <input 
-            type="text" 
-            id="zip" 
-            name="zip" 
-            value={formData.zip} 
-            onChange={handleChange} 
+          <input
+            type="text"
+            id="zip"
+            name="zip"
+            value={formData.zip}
+            onChange={handleChange}
             className={errors.zip ? 'error' : ''}
             placeholder="94103"
           />
@@ -151,12 +153,12 @@ export default function CheckoutStepShipping({
       <div className="p-form-row">
         <div className="p-form-group">
           <label htmlFor="country">Country *</label>
-          <input 
-            type="text" 
-            id="country" 
-            name="country" 
-            value={formData.country} 
-            onChange={handleChange} 
+          <input
+            type="text"
+            id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
             className={errors.country ? 'error' : ''}
             placeholder="United States"
           />
@@ -164,12 +166,12 @@ export default function CheckoutStepShipping({
         </div>
         <div className="p-form-group">
           <label htmlFor="phone">Phone Number *</label>
-          <input 
-            type="tel" 
-            id="phone" 
-            name="phone" 
-            value={formData.phone} 
-            onChange={handleChange} 
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
             className={errors.phone ? 'error' : ''}
             placeholder="415-555-0199"
           />

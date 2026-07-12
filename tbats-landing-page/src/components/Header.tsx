@@ -1,5 +1,9 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { m, AnimatePresence } from 'framer-motion';
+import Container from '@components/ui/Container';
+import Button from '@components/ui/Button';
+import useActiveSection from '@hooks/useActiveSection';
+import styles from './Header.module.css';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
@@ -8,146 +12,206 @@ interface HeaderProps {
 
 export default function Header({ theme, setTheme }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const activeSection = useActiveSection([
+    'services',
+    'portfolio',
+    'process',
+    'pricing',
+    'contact',
+  ]);
+
+  // Trap focus inside mobile menu when open
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const menuElement = document.querySelector(`.${styles.mobileMenu}`);
+    if (!menuElement) return;
+
+    const focusableSelector =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableElements = menuElement.querySelectorAll(focusableSelector);
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    // Focus first link in mobile menu initially
+    firstElement.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   return (
     <nav className="glass-nav">
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span className="material-symbols-outlined" style={{ color: 'var(--color-accent)', fontSize: '28px' }}>
+      <Container className={styles.navContainer}>
+        <div className={styles.logoContainer}>
+          <span
+            className={`material-symbols-outlined ${styles.logoIcon}`}
+            style={{ fontSize: '28px' }}
+          >
             code_blocks
           </span>
-          <span style={{ 
-            fontSize: '1.4rem', 
-            fontWeight: 800, 
-            letterSpacing: '0.02em',
-            fontFamily: 'var(--font-serif)'
-          }}>
-            tbats<span style={{ color: 'var(--color-accent)' }}>.dev</span>
+          <span className={styles.logoText}>
+            tbats<span className={styles.logoDot}>.dev</span>
           </span>
         </div>
-        
+
         {/* Desktop Nav */}
-        <div className="desktop-nav" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-          <div style={{ display: 'flex', gap: '1.5rem', marginRight: '1rem' }} className="nav-links">
-            <a href="#services" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Services</a>
-            <a href="#portfolio" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Sandbox</a>
-            <a href="#process" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Process</a>
-            <a href="#contact" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Contact</a>
-            <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>Pricing</a>
-            <a href="#about" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s' }}>About</a>
+        <div className={styles.desktopNav}>
+          <div className={styles.navLinks}>
+            <a
+              href="#services"
+              className={`${styles.navLink}${activeSection === 'services' ? ` ${styles.navLinkActive}` : ''}`}
+            >
+              Services
+            </a>
+            <a
+              href="#portfolio"
+              className={`${styles.navLink}${activeSection === 'portfolio' ? ` ${styles.navLinkActive}` : ''}`}
+            >
+              Sandbox
+            </a>
+            <a
+              href="#process"
+              className={`${styles.navLink}${activeSection === 'process' ? ` ${styles.navLinkActive}` : ''}`}
+            >
+              Process
+            </a>
+            <a
+              href="#pricing"
+              className={`${styles.navLink}${activeSection === 'pricing' ? ` ${styles.navLinkActive}` : ''}`}
+            >
+              Pricing
+            </a>
+            <a
+              href="#contact"
+              className={`${styles.navLink}${activeSection === 'contact' ? ` ${styles.navLinkActive}` : ''}`}
+            >
+              Contact
+            </a>
           </div>
-          
+
           {/* Custom style toggler for color theme */}
-          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginRight: '0.5rem' }}>
+          <div className={styles.themeToggleWrapper}>
             {/* Light/Dark Toggle */}
-            <motion.button
+            <m.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="clickable"
+              className={`${styles.themeButton} clickable`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1.5px solid var(--border-color)',
-                borderRadius: '50%',
-                width: '34px',
-                height: '34px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                color: 'var(--text-primary)',
-                transition: 'background 0.3s, border-color 0.3s'
-              }}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
               </span>
-            </motion.button>
+            </m.button>
           </div>
 
-          <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>
+          <Button as="a" href="#contact" variant="primary" size="sm">
             Start a Project
-          </a>
+          </Button>
         </div>
 
         {/* Mobile Nav Toggle */}
-        <button 
-          className="mobile-nav-toggle clickable"
+        <button
+          className={`${styles.mobileNavToggle} clickable`}
           onClick={() => setIsOpen(!isOpen)}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'var(--text-primary)',
-            cursor: 'pointer',
-            display: 'none',
-            padding: '0.5rem'
-          }}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-menu"
         >
           <span className="material-symbols-outlined" style={{ fontSize: '28px' }}>
             {isOpen ? 'close' : 'menu'}
           </span>
         </button>
-      </div>
+      </Container>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
+            id="mobile-nav-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            style={{
-              position: 'absolute',
-              top: '80px',
-              left: 0,
-              width: '100%',
-              background: 'var(--nav-bg)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              borderBottom: '1px solid var(--border-color)',
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '2rem',
-              gap: '1.5rem'
-            }}
+            className={styles.mobileMenu}
           >
-            <a href="#services" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>Services</a>
-            <a href="#portfolio" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>Sandbox</a>
-            <a href="#process" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>Process</a>
-            <a href="#contact" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>Contact</a>
-            <a href="#pricing" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>Pricing</a>
-            <a href="#about" onClick={() => setIsOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}>About</a>
-            
+            <a
+              href="#services"
+              onClick={() => setIsOpen(false)}
+              className={`${styles.mobileNavLink}${activeSection === 'services' ? ` ${styles.mobileNavLinkActive}` : ''}`}
+            >
+              Services
+            </a>
+            <a
+              href="#portfolio"
+              onClick={() => setIsOpen(false)}
+              className={`${styles.mobileNavLink}${activeSection === 'portfolio' ? ` ${styles.mobileNavLinkActive}` : ''}`}
+            >
+              Sandbox
+            </a>
+            <a
+              href="#process"
+              onClick={() => setIsOpen(false)}
+              className={`${styles.mobileNavLink}${activeSection === 'process' ? ` ${styles.mobileNavLinkActive}` : ''}`}
+            >
+              Process
+            </a>
+            <a
+              href="#pricing"
+              onClick={() => setIsOpen(false)}
+              className={`${styles.mobileNavLink}${activeSection === 'pricing' ? ` ${styles.mobileNavLinkActive}` : ''}`}
+            >
+              Pricing
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className={`${styles.mobileNavLink}${activeSection === 'contact' ? ` ${styles.mobileNavLinkActive}` : ''}`}
+            >
+              Contact
+            </a>
             {/* Style Toggles in Mobile */}
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: '0.5rem' }}>
-              <motion.button
+            <div className={styles.mobileMenuActions}>
+              <m.button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="clickable"
+                className={`${styles.mobileThemeButton} clickable`}
                 whileTap={{ scale: 0.95 }}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1.5px solid var(--border-color)',
-                  borderRadius: '50%',
-                  width: '38px',
-                  height: '38px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  color: 'var(--text-primary)',
-                  transition: 'background 0.3s, border-color 0.3s'
-                }}
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
                   {theme === 'dark' ? 'light_mode' : 'dark_mode'}
                 </span>
-              </motion.button>
+              </m.button>
             </div>
 
-            <a href="#contact" onClick={() => setIsOpen(false)} className="btn-primary" style={{ textAlign: 'center', marginTop: '1rem', justifyContent: 'center' }}>
+            <Button
+              as="a"
+              href="#contact"
+              variant="primary"
+              onClick={() => setIsOpen(false)}
+              style={{ textAlign: 'center', marginTop: '1rem', justifyContent: 'center' }}
+            >
               Start a Project
-            </a>
-          </motion.div>
+            </Button>
+          </m.div>
         )}
       </AnimatePresence>
     </nav>
