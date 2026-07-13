@@ -14,11 +14,6 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/demo/:projectId": {
-    params: {
-      "projectId": string;
-    };
-  };
   "/api/contact": {
     params: {};
   };
@@ -27,15 +22,11 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/demo/:projectId" | "/api/contact";
+    page: "/" | "/api/contact";
   };
   "routes/landing.tsx": {
     id: "routes/landing";
     page: "/";
-  };
-  "routes/demo.$projectId.tsx": {
-    id: "routes/demo.$projectId";
-    page: "/demo/:projectId";
   };
   "routes/api.contact.ts": {
     id: "routes/api.contact";
@@ -46,6 +37,5 @@ type RouteFiles = {
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/landing": typeof import("./app/routes/landing.tsx");
-  "routes/demo.$projectId": typeof import("./app/routes/demo.$projectId.tsx");
   "routes/api.contact": typeof import("./app/routes/api.contact.ts");
 };

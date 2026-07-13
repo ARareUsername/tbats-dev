@@ -87,7 +87,7 @@ export default function Header({ theme, setTheme }: HeaderProps) {
               href="#portfolio"
               className={`${styles.navLink}${activeSection === 'portfolio' ? ` ${styles.navLinkActive}` : ''}`}
             >
-              Sandbox
+              Projects
             </a>
             <a
               href="#process"
@@ -166,7 +166,7 @@ export default function Header({ theme, setTheme }: HeaderProps) {
               onClick={() => setIsOpen(false)}
               className={`${styles.mobileNavLink}${activeSection === 'portfolio' ? ` ${styles.mobileNavLinkActive}` : ''}`}
             >
-              Sandbox
+              Projects
             </a>
             <a
               href="#process"

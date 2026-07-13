@@ -8,7 +8,7 @@ import useReducedMotion from '@hooks/useReducedMotion';
 import Header from '@components/Header';
 import Hero from '@components/Hero';
 import ServicesList from '@components/ServicesList';
-import Portfolio from '@components/Portfolio';
+import ProjectGallery from '@components/ProjectGallery';
 import ClientTimeline from '@components/ClientTimeline';
 import InteractiveEstimator from '@components/InteractiveEstimator';
 import Testimonials from '@components/Testimonials';
@@ -83,7 +83,7 @@ export default function LandingRoute() {
 
       <div className="section-divider" />
       <ScrollReveal>
-        <Portfolio />
+        <ProjectGallery />
       </ScrollReveal>
 
       <div className="section-divider" />

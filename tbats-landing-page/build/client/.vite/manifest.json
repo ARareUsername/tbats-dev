@@ -1,8 +1,4 @@
 {
-  "_demo-presets-DvIktPP1.js": {
-    "file": "assets/js/demo-presets-DvIktPP1.js",
-    "name": "demo-presets"
-  },
   "_useReducedMotion-CzVjuypt.js": {
     "file": "assets/js/useReducedMotion-CzVjuypt.js",
     "name": "useReducedMotion"
@@ -14,7 +10,7 @@
     "isEntry": true
   },
   "app/root.tsx?__react-router-build-client-route": {
-    "file": "assets/js/root-DA1zUIXy.js",
+    "file": "assets/js/root-BJLz2rY4.js",
     "name": "root",
     "src": "app/root.tsx?__react-router-build-client-route",
     "isEntry": true,
@@ -22,7 +18,7 @@
       "_useReducedMotion-CzVjuypt.js"
     ],
     "css": [
-      "assets/css/root-Qga06NIw.css"
+      "assets/css/root-CvG-Lko8.css"
     ]
   },
   "app/routes/api.contact.ts?__react-router-build-client-route": {
@@ -31,18 +27,8 @@
     "src": "app/routes/api.contact.ts?__react-router-build-client-route",
     "isEntry": true
   },
-  "app/routes/demo.$projectId.tsx?__react-router-build-client-route": {
-    "file": "assets/js/demo._projectId-DLAtM2s-.js",
-    "name": "demo._projectId",
-    "src": "app/routes/demo.$projectId.tsx?__react-router-build-client-route",
-    "isEntry": true,
-    "imports": [
-      "_useReducedMotion-CzVjuypt.js",
-      "_demo-presets-DvIktPP1.js"
-    ]
-  },
   "app/routes/landing.tsx?__react-router-build-client-route": {
-    "file": "assets/js/landing-Ch6sXNXW.js",
+    "file": "assets/js/landing-GhcvpKW5.js",
     "name": "landing",
     "src": "app/routes/landing.tsx?__react-router-build-client-route",
     "isEntry": true,
@@ -50,7 +36,7 @@
       "_useReducedMotion-CzVjuypt.js"
     ],
     "css": [
-      "assets/css/landing-Blg4kPBR.css"
+      "assets/css/landing-BAnK-ISi.css"
     ]
   }
 }

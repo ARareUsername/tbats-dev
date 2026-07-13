@@ -1,0 +1,120 @@
+.section {
+  position: relative;
+}
+
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+  background: var(--bg-card);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.cardFull {
+  grid-column: 1 / -1;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.industry {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.projectName {
+  font-size: 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+.result {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Responsive: third card spans full by default on desktop too via .cardFull */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardFull {
+    grid-column: auto;
+  }
+}
