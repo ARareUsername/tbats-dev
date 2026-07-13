@@ -13,7 +13,15 @@ const meta = {
 export default meta;
 
 export const TextInput: StoryObj<typeof Input> = {
-  render: () => <Input label="Full Name" id="name" hint="Enter your legal full name" placeholder="John Doe" style={{ width: '300px' }} />,
+  render: () => (
+    <Input
+      label="Full Name"
+      id="name"
+      hint="Enter your legal full name"
+      placeholder="John Doe"
+      style={{ width: '300px' }}
+    />
+  ),
 };
 
 export const SelectInput: StoryObj<typeof Select> = {
@@ -26,5 +34,13 @@ export const SelectInput: StoryObj<typeof Select> = {
 };
 
 export const TextareaInput: StoryObj<typeof Textarea> = {
-  render: () => <Textarea label="Project Description" id="desc" hint="Provide detailed requirements" placeholder="Describe your project..." style={{ width: '300px' }} />,
+  render: () => (
+    <Textarea
+      label="Project Description"
+      id="desc"
+      hint="Provide detailed requirements"
+      placeholder="Describe your project..."
+      style={{ width: '300px' }}
+    />
+  ),
 };

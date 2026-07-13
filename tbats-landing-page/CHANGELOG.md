@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+
 - TypeScript migration with strict config
 - Design token system (`tokens.css`, `globals.css`)
 - Component library: Button, Card, Input, Badge, Avatar, Section, Container, SkipLink
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Security: CSP headers, env validation, server-only EmailJS keys
 
 ### Changed
+
 - Migrated from Vite SPA to React Router hybrid SSR architecture
 - Custom cursor refactored for 60fps with spring physics
 - Reduced-motion support across all animated components

@@ -33,7 +33,7 @@ export default defineConfig({
         'src/components/*.tsx',
         'src/env.ts',
         'src/data/**',
-        'src/types/**'
+        'src/types/**',
       ],
       thresholds: {
         statements: 80,

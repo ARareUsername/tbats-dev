@@ -28,7 +28,7 @@
     "isEntry": true
   },
   "app/routes/landing.tsx?__react-router-build-client-route": {
-    "file": "assets/js/landing-GhcvpKW5.js",
+    "file": "assets/js/landing-BDEgjxwf.js",
     "name": "landing",
     "src": "app/routes/landing.tsx?__react-router-build-client-route",
     "isEntry": true,
@@ -36,7 +36,7 @@
       "_useReducedMotion-CzVjuypt.js"
     ],
     "css": [
-      "assets/css/landing-BAnK-ISi.css"
+      "assets/css/landing-BkTuC-sj.css"
     ]
   }
 }

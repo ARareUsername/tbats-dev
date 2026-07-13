@@ -32,7 +32,11 @@ export default function BackToTop() {
           transition={{ duration: prefersReducedMotion ? 0.15 : 0.25 }}
           aria-label="Back to top"
         >
-          <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '24px' }}>
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+            style={{ fontSize: '24px' }}
+          >
             arrow_upward
           </span>
         </m.a>

@@ -41,7 +41,10 @@ export default function InteractiveEstimator() {
                 <ul className={styles.benefitsList}>
                   {tier.benefits.map((benefit, bIdx) => (
                     <li key={bIdx} className={styles.benefitItem}>
-                      <span className={`material-symbols-outlined ${styles.checkIcon}`} aria-hidden="true">
+                      <span
+                        className={`material-symbols-outlined ${styles.checkIcon}`}
+                        aria-hidden="true"
+                      >
                         check_circle
                       </span>
                       {benefit}
@@ -71,7 +74,10 @@ export default function InteractiveEstimator() {
           <ul className={styles.carePlanBenefits}>
             {carePlan.benefits.map((benefit, bIdx) => (
               <li key={bIdx} className={styles.carePlanBenefitItem}>
-                <span className={`material-symbols-outlined ${styles.checkIcon}`} aria-hidden="true">
+                <span
+                  className={`material-symbols-outlined ${styles.checkIcon}`}
+                  aria-hidden="true"
+                >
                   check_circle
                 </span>
                 {benefit}

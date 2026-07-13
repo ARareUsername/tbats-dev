@@ -19,7 +19,11 @@ describe('Button component', () => {
   });
 
   test('renders as a custom element (e.g. anchor link)', () => {
-    render(<Button as="a" href="/test">Link Button</Button>);
+    render(
+      <Button as="a" href="/test">
+        Link Button
+      </Button>
+    );
     expect(screen.getByRole('link', { name: /link button/i })).toHaveAttribute('href', '/test');
   });
 });

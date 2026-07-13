@@ -93,7 +93,10 @@ export default function ClientTimeline() {
                     <h3 className={styles.cardTitle}>{step.title}</h3>
                     <span className={styles.cardSubtitle}>{step.subtitle}</span>
                   </div>
-                  <span className={`${styles.cardIcon} material-symbols-outlined text-accent`} aria-hidden="true">
+                  <span
+                    className={`${styles.cardIcon} material-symbols-outlined text-accent`}
+                    aria-hidden="true"
+                  >
                     {step.icon}
                   </span>
                 </div>

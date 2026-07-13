@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useActiveSection(
   sectionIds: readonly string[],
-  offset = 80,
+  offset = 80
 ): string | null {
   const [active, setActive] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export default function useActiveSection(
       {
         rootMargin: `-${offset}px 0px -40% 0px`,
         threshold: 0,
-      },
+      }
     );
 
     const elements: Element[] = [];
