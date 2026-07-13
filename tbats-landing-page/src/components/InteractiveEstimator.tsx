@@ -22,7 +22,6 @@ export default function InteractiveEstimator() {
             <m.div
               key={idx}
               whileHover={{ y: -12, scale: 1.02 }}
-              whileTap={{ scale: 0.95, rotate: [0, -0.5, 0.5, -0.5, 0] }}
               transition={{ type: 'spring', stiffness: 450, damping: 12 }}
               className={styles.tierMotionWrapper}
             >
@@ -42,7 +41,7 @@ export default function InteractiveEstimator() {
                 <ul className={styles.benefitsList}>
                   {tier.benefits.map((benefit, bIdx) => (
                     <li key={bIdx} className={styles.benefitItem}>
-                      <span className={`material-symbols-outlined ${styles.checkIcon}`}>
+                      <span className={`material-symbols-outlined ${styles.checkIcon}`} aria-hidden="true">
                         check_circle
                       </span>
                       {benefit}
@@ -72,7 +71,7 @@ export default function InteractiveEstimator() {
           <ul className={styles.carePlanBenefits}>
             {carePlan.benefits.map((benefit, bIdx) => (
               <li key={bIdx} className={styles.carePlanBenefitItem}>
-                <span className={`material-symbols-outlined ${styles.checkIcon}`}>
+                <span className={`material-symbols-outlined ${styles.checkIcon}`} aria-hidden="true">
                   check_circle
                 </span>
                 {benefit}

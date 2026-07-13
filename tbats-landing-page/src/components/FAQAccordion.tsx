@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { m } from 'framer-motion';
 import Section from '@components/ui/Section';
 import styles from './FAQAccordion.module.css';
 
@@ -54,30 +54,34 @@ export default function FAQAccordion() {
             const isOpen = activeIndex === index;
             return (
               <div key={index} className={styles.faqItem}>
-                <button onClick={() => toggleFAQ(index)} className={styles.button}>
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className={styles.button}
+                  aria-expanded={isOpen}
+                  aria-label={isOpen ? 'Collapse answer' : 'Expand answer'}
+                >
                   <span>{faq.question}</span>
                   <m.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                     className="material-symbols-outlined text-accent"
+                    aria-hidden="true"
                   >
                     keyboard_arrow_down
                   </m.span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <m.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className={styles.answerWrapper}
-                    >
-                      <p className={styles.answerText}>{faq.answer}</p>
-                    </m.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  className={styles.answerWrapper}
+                  style={{
+                    gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.3s ease-in-out',
+                  }}
+                >
+                  <div className={styles.answerInner}>
+                    <p className={styles.answerText}>{faq.answer}</p>
+                  </div>
+                </div>
               </div>
             );
           })}

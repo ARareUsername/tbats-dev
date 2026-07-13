@@ -15,6 +15,7 @@ import Testimonials from '@components/Testimonials';
 import FAQAccordion from '@components/FAQAccordion';
 import ConsultationForm from '@components/ConsultationForm';
 import Footer from '@components/Footer';
+import BackToTop from '@components/BackToTop';
 
 export function meta() {
   return [
@@ -112,6 +113,7 @@ export default function LandingRoute() {
 
       <div className="section-divider" />
       <Footer />
+      <BackToTop />
     </div>
   );
 }

@@ -19,8 +19,6 @@ export default function ConsultationForm() {
     if (actionData?.success) {
       setSubmitted(true);
       formRef.current?.reset();
-      const timer = setTimeout(() => setSubmitted(false), 5000);
-      return () => clearTimeout(timer);
     }
   }, [actionData]);
 
@@ -30,13 +28,20 @@ export default function ConsultationForm() {
         <div className={`editorial-card ${styles.editorialCard}`}>
           {submitted && (
             <div className={`animate-fade-in ${styles.submittedOverlay}`} aria-live="polite">
-              <span className={`material-symbols-outlined ${styles.submittedIcon}`}>
+              <span className={`material-symbols-outlined ${styles.submittedIcon}`} aria-hidden="true">
                 check_circle
               </span>
               <h3 className={styles.submittedTitle}>Request Sent</h3>
               <p className={styles.submittedText}>
                 We will be in touch shortly to schedule your call.
               </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className={styles.dismissBtn}
+                aria-label="Send another request"
+              >
+                Send Another Request
+              </button>
             </div>
           )}
 
@@ -54,7 +59,7 @@ export default function ConsultationForm() {
                 {/* Email */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`}>mail</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">mail</span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Email Us</h4>
@@ -70,7 +75,7 @@ export default function ConsultationForm() {
                 {/* Location */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`}>location_on</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">location_on</span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Our Studio</h4>
@@ -81,7 +86,7 @@ export default function ConsultationForm() {
                 {/* Availability */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`}>schedule</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">schedule</span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Availability</h4>
@@ -146,7 +151,6 @@ export default function ConsultationForm() {
                   type="submit"
                   disabled={submitting}
                   className={styles.submitBtn}
-                  style={{ opacity: submitting ? 0.7 : 1 }}
                 >
                   {submitting ? 'Sending Request...' : 'Start a Project'}
                 </Button>

@@ -1,6 +1,5 @@
 import Section from '@components/ui/Section';
 import Container from '@components/ui/Container';
-import Button from '@components/ui/Button';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -23,12 +22,12 @@ export default function Hero() {
           </p>
 
           <div className={styles.actions}>
-            <Button as="a" href="#contact" variant="primary">
+            <a href="#contact" className={`${styles.heroLink} ${styles.heroLinkPrimary}`}>
               Start a Project
-            </Button>
-            <Button as="a" href="#process" variant="secondary">
+            </a>
+            <a href="#process" className={`${styles.heroLink} ${styles.heroLinkSecondary}`}>
               How We Work
-            </Button>
+            </a>
           </div>
         </div>
       </Container>

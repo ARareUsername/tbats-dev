@@ -23,7 +23,8 @@
 .stars {
   color: var(--color-accent);
   margin-bottom: 1rem;
-  letter-spacing: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .text {

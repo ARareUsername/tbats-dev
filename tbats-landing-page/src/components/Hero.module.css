@@ -65,3 +65,40 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.heroLink {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: var(--transition-smooth);
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem;
+}
+
+.heroLinkPrimary {
+  background: var(--text-primary);
+  color: var(--bg-dark);
+}
+
+.heroLinkPrimary:hover {
+  background: var(--color-silver);
+  transform: translateY(-2px);
+}
+
+.heroLinkSecondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.heroLinkSecondary:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-card-hover);
+}

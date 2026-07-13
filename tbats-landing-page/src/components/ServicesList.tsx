@@ -81,7 +81,7 @@ export default function ServicesList() {
               <div>
                 <div className={styles.cardHeader}>
                   <div className={styles.iconContainer}>
-                    <span className={`material-symbols-outlined text-accent ${styles.icon}`}>
+                    <span className={`material-symbols-outlined text-accent ${styles.icon}`} aria-hidden="true">
                       {pillar.icon}
                     </span>
                   </div>
@@ -96,7 +96,7 @@ export default function ServicesList() {
                 <ul className={styles.competenciesList}>
                   {pillar.capabilities.map(capability => (
                     <li key={capability} className={styles.competencyItem}>
-                      <span className={`material-symbols-outlined text-accent ${styles.checkIcon}`}>
+                      <span className={`material-symbols-outlined text-accent ${styles.checkIcon}`} aria-hidden="true">
                         check
                       </span>
                       {capability}
