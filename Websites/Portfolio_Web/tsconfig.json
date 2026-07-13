@@ -1,0 +1,8 @@
+{
+  /* ─── Root tsconfig (project references) ─── */
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },   /* app source */
+    { "path": "./tsconfig.node.json" }   /* Node/Vite config */
+  ]
+}
