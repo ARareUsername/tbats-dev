@@ -10,47 +10,49 @@ interface ServicePillar {
   icon: string;
   description: string;
   capabilities: string[];
+  wide?: boolean;
 }
 
 const pillars: readonly ServicePillar[] = [
   {
     id: 1,
-    title: 'Bespoke Design',
-    icon: 'token',
+    title: 'A Brand That Stands Out',
+    icon: 'palette',
     description:
-      'We craft unique, brand-specific digital designs from scratch. No templates, just pure creative layouts built to convert.',
+      'We create brand identities that captivate on first view — no templates, just custom design crafted around what makes your business unique.',
     capabilities: [
-      'Art Direction & Identity',
-      'High-Fidelity Wireframes',
-      'Interactive Prototyping',
-      'Typography & UI Systems',
+      'A brand look that is uniquely yours',
+      'See exactly what your site will look like before we build',
+      'Test your site experience early, so there are no surprises',
+      'Clean, professional design across every page',
     ],
   },
   {
     id: 2,
-    title: 'Custom Development',
-    icon: 'code',
+    title: 'A Website That Works for You',
+    icon: 'rocket_launch',
     description:
-      'Blazing-fast digital applications built using React, Vite, and Next.js. Clean, modular architectures with flawless transitions.',
+      'We build fast, reliable websites that handle your bookings, forms, and payments — so you can focus on running your business.',
     capabilities: [
-      'React & Next.js Builds',
-      'Advanced CSS/SVG Animations',
-      'Headless CMS Integrations',
-      'API & Backend Engineering',
+      'A fast, modern website your customers will love',
+      'Smooth animations that impress visitors',
+      'Update your content anytime — no tech skills needed',
+      'Handles your bookings, forms, and payments seamlessly',
     ],
   },
   {
     id: 3,
-    title: 'SEO & Optimization',
-    icon: 'speed',
+    title: 'Customers Who Find You Online',
+    icon: 'trending_up',
     description:
-      'Achieve perfect lighthouse scores and search engine dominance with hyper-optimized, clean code implementations.',
+      'We optimize your site so people searching on Google find you first — and stay because your site loads fast on any device.',
     capabilities: [
-      'Core Web Vitals Strategy',
-      'Semantic HTML & Accessibility',
-      'Page Load Speed Tuning',
-      'Responsive Scaling Checks',
+      'Your site loads fast on phone or desktop',
+      'Works for every visitor and ranks higher on Google',
+      'No one leaves waiting for your site to open',
+      'Looks perfect on all screen sizes',
     ],
+    wide: true,
   },
 ] as const;
 
@@ -61,49 +63,46 @@ export default function ServicesList() {
     <Section id="services">
       <Container>
         <div className={styles.header}>
-          <span className={`text-accent ${styles.subtitle}`}>Expertise</span>
-          <h2 className={`text-gradient ${styles.title}`}>Our Capabilities</h2>
-          <p className={styles.description}>
-            We combine high-end aesthetic vision with top-tier technical implementation to deliver
-            award-winning websites.
-          </p>
+          <span className={`text-accent ${styles.badge}`}>Design · Code · Grow</span>
+          <h2 className={`text-gradient ${styles.title}`}>What We Build</h2>
+          <p className={styles.subtitle}>From Concept to Conversion</p>
         </div>
 
-        <div className="grid-3">
+        <div className={styles.grid}>
           {pillars.map(pillar => (
             <MotionCard
               key={pillar.id}
               variant="editorial"
-              className={styles.cardWrapper}
+              className={`${styles.card} ${pillar.wide ? styles.cardWide : ''}`}
               whileHover={{ borderColor: 'rgba(255, 255, 255, 0.4)' }}
               transition={{ duration: 0.3 }}
             >
-              <div>
-                <div className={styles.cardHeader}>
-                  <div className={styles.iconContainer}>
-                    <span className={`material-symbols-outlined text-accent ${styles.icon}`} aria-hidden="true">
-                      {pillar.icon}
+              <div className={styles.iconContainer}>
+                <span
+                  className={`material-symbols-outlined text-accent ${styles.icon}`}
+                  aria-hidden="true"
+                >
+                  {pillar.icon}
+                </span>
+              </div>
+
+              <h3 className={styles.cardTitle}>{pillar.title}</h3>
+
+              <p className={styles.cardDescription}>{pillar.description}</p>
+
+              <ul className={styles.list}>
+                {pillar.capabilities.map(capability => (
+                  <li key={capability} className={styles.listItem}>
+                    <span
+                      className={`material-symbols-outlined text-accent ${styles.checkIcon}`}
+                      aria-hidden="true"
+                    >
+                      check
                     </span>
-                  </div>
-                  <h3 className={styles.cardTitle}>{pillar.title}</h3>
-                </div>
-
-                <p className={styles.cardDescription}>{pillar.description}</p>
-              </div>
-
-              <div>
-                <h4 className={styles.competenciesTitle}>Core Competencies</h4>
-                <ul className={styles.competenciesList}>
-                  {pillar.capabilities.map(capability => (
-                    <li key={capability} className={styles.competencyItem}>
-                      <span className={`material-symbols-outlined text-accent ${styles.checkIcon}`} aria-hidden="true">
-                        check
-                      </span>
-                      {capability}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    {capability}
+                  </li>
+                ))}
+              </ul>
             </MotionCard>
           ))}
         </div>

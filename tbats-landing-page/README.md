@@ -44,21 +44,21 @@ npm run dev        # Vite dev server (port 5173)
 
 ## Scripts
 
-| Command                  | Description                          |
-| ------------------------ | ------------------------------------ |
-| `npm run dev`            | Start dev server                     |
-| `npm run build`          | Production build                     |
-| `npm run preview`        | Preview production build (port 4173) |
-| `npm run typecheck`      | TypeScript type checking             |
-| `npm run lint`           | ESLint (zero warnings required)      |
-| `npm run lint:fix`       | ESLint auto-fix                      |
-| `npm run format`         | Prettier formatting                  |
-| `npm run test`           | Unit/integration tests (Vitest)      |
-| `npm run test:coverage`  | Test coverage (80% threshold)        |
-| `npm run test:e2e`       | E2E tests (Playwright, Chromium/Firefox/WebKit/Mobile) |
-| `npm run build:analyze`  | Bundle analysis (stats.html)         |
-| `npm run storybook`      | Storybook dev server (port 6006)     |
-| `npm run build:storybook`| Build Storybook for deployment       |
+| Command                   | Description                                            |
+| ------------------------- | ------------------------------------------------------ |
+| `npm run dev`             | Start dev server                                       |
+| `npm run build`           | Production build                                       |
+| `npm run preview`         | Preview production build (port 4173)                   |
+| `npm run typecheck`       | TypeScript type checking                               |
+| `npm run lint`            | ESLint (zero warnings required)                        |
+| `npm run lint:fix`        | ESLint auto-fix                                        |
+| `npm run format`          | Prettier formatting                                    |
+| `npm run test`            | Unit/integration tests (Vitest)                        |
+| `npm run test:coverage`   | Test coverage (80% threshold)                          |
+| `npm run test:e2e`        | E2E tests (Playwright, Chromium/Firefox/WebKit/Mobile) |
+| `npm run build:analyze`   | Bundle analysis (stats.html)                           |
+| `npm run storybook`       | Storybook dev server (port 6006)                       |
+| `npm run build:storybook` | Build Storybook for deployment                         |
 
 ## Tech Stack
 

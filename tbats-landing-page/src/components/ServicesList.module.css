@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-.subtitle {
+.badge {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -13,73 +13,71 @@
 .title {
   font-size: clamp(2rem, 6vw, 3rem);
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.description {
+.subtitle {
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
+  font-size: 1.1rem;
 }
 
-.cardWrapper {
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
   will-change: transform, opacity;
 }
 
-.cardHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+.cardWide {
+  grid-column: 1 / -1;
 }
 
 .iconContainer {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.2);
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  margin-bottom: 1.5rem;
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .cardDescription {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.competenciesTitle {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  opacity: 0.4;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-}
-
-.competenciesList {
+.list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-top: auto;
 }
 
-.competencyItem {
+.listItem {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -89,4 +87,10 @@
 
 .checkIcon {
   font-size: 1rem;
+}
+
+@media (width <= 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

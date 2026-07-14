@@ -14,7 +14,11 @@ describe('Card component', () => {
   });
 
   test('applies specified variant and HTML tag', () => {
-    const { container } = render(<Card variant="demo" as="article">Demo Article Card</Card>);
+    const { container } = render(
+      <Card variant="demo" as="article">
+        Demo Article Card
+      </Card>
+    );
     expect(container.querySelector('article')).toBeInTheDocument();
     expect(container.firstChild).toHaveClass(/demo/);
   });

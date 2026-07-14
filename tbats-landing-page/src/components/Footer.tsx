@@ -8,7 +8,9 @@ export default function Footer() {
         <div className="grid-2" style={{ alignItems: 'start', gap: '2rem' }}>
           <div>
             <div className={styles.logoContainer}>
-              <span className={`material-symbols-outlined ${styles.logoIcon}`} aria-hidden="true">code_blocks</span>
+              <span className={`material-symbols-outlined ${styles.logoIcon}`} aria-hidden="true">
+                code_blocks
+              </span>
               <span className={styles.logoText}>
                 tbats<span className={styles.logoDot}>.dev</span>
               </span>
@@ -53,7 +55,9 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p>&copy; {new Date().getFullYear()} TBATS Dev. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">language</span>
+            <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">
+              language
+            </span>
           </div>
         </div>
       </Container>

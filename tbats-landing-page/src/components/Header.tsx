@@ -119,7 +119,11 @@ export default function Header({ theme, setTheme }: HeaderProps) {
               whileTap={{ scale: 0.95 }}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }} aria-hidden="true">
+              <span
+                className="material-symbols-outlined"
+                style={{ fontSize: '18px' }}
+                aria-hidden="true"
+              >
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
               </span>
             </m.button>
@@ -138,7 +142,11 @@ export default function Header({ theme, setTheme }: HeaderProps) {
           aria-expanded={isOpen}
           aria-controls="mobile-nav-menu"
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '28px' }} aria-hidden="true">
+          <span
+            className="material-symbols-outlined"
+            style={{ fontSize: '28px' }}
+            aria-hidden="true"
+          >
             {isOpen ? 'close' : 'menu'}
           </span>
         </button>
@@ -197,7 +205,11 @@ export default function Header({ theme, setTheme }: HeaderProps) {
                 whileTap={{ scale: 0.95 }}
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }} aria-hidden="true">
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: '20px' }}
+                  aria-hidden="true"
+                >
                   {theme === 'dark' ? 'light_mode' : 'dark_mode'}
                 </span>
               </m.button>

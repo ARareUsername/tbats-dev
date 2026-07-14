@@ -28,7 +28,10 @@ export default function ConsultationForm() {
         <div className={`editorial-card ${styles.editorialCard}`}>
           {submitted && (
             <div className={`animate-fade-in ${styles.submittedOverlay}`} aria-live="polite">
-              <span className={`material-symbols-outlined ${styles.submittedIcon}`} aria-hidden="true">
+              <span
+                className={`material-symbols-outlined ${styles.submittedIcon}`}
+                aria-hidden="true"
+              >
                 check_circle
               </span>
               <h3 className={styles.submittedTitle}>Request Sent</h3>
@@ -59,7 +62,9 @@ export default function ConsultationForm() {
                 {/* Email */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">mail</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">
+                      mail
+                    </span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Email Us</h4>
@@ -75,7 +80,9 @@ export default function ConsultationForm() {
                 {/* Location */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">location_on</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">
+                      location_on
+                    </span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Our Studio</h4>
@@ -86,7 +93,9 @@ export default function ConsultationForm() {
                 {/* Availability */}
                 <div className={styles.infoItem}>
                   <div className={styles.iconWrapper}>
-                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">schedule</span>
+                    <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden="true">
+                      schedule
+                    </span>
                   </div>
                   <div>
                     <h4 className={styles.itemLabel}>Availability</h4>
@@ -108,7 +117,12 @@ export default function ConsultationForm() {
                 </p>
               </div>
 
-              <fetcher.Form method="post" action="/api/contact" ref={formRef} className={styles.formElement}>
+              <fetcher.Form
+                method="post"
+                action="/api/contact"
+                ref={formRef}
+                className={styles.formElement}
+              >
                 {/* Honeypot field to block automated spam bots */}
                 <div style={{ display: 'none' }} aria-hidden="true">
                   <input type="text" name="bot_field" tabIndex={-1} autoComplete="off" />
@@ -145,13 +159,13 @@ export default function ConsultationForm() {
                   className={styles.textareaOverride}
                 />
 
-                {errorMsg && <div className={styles.errorMsg} aria-live="polite">{errorMsg}</div>}
+                {errorMsg && (
+                  <div className={styles.errorMsg} aria-live="polite">
+                    {errorMsg}
+                  </div>
+                )}
 
-                <Button
-                  type="submit"
-                  disabled={submitting}
-                  className={styles.submitBtn}
-                >
+                <Button type="submit" disabled={submitting} className={styles.submitBtn}>
                   {submitting ? 'Sending Request...' : 'Start a Project'}
                 </Button>
               </fetcher.Form>

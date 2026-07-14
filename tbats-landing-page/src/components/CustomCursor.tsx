@@ -107,8 +107,7 @@ export default function CustomCursor({ theme }: CustomCursorProps) {
         x: cursorXSpring,
         y: cursorYSpring,
         scale,
-        transition:
-          'background-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
+        transition: 'background-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
       }}
     />
   );
