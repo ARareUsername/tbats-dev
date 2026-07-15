@@ -1,0 +1,48 @@
+import type { BlogPost } from '@mytypes/blog'
+
+export const posts: BlogPost[] = [
+  {
+    slug: 'hidden-coves-of-the-pacific',
+    title: 'Hidden Coves of the Pacific',
+    date: '2026-06-15',
+    heroImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=1200&fit=crop',
+    alt: 'A secluded sandy cove surrounded by rocky cliffs',
+    excerpt: 'Discovered a string of untouched beaches accessible only by sea. Each cove told a different story of tides and time.',
+    body: 'The Pacific coast holds secrets that reveal themselves only to those willing to leave the beaten path. Armed with nothing but a kayak and a sense of wonder, I set out to explore the hidden coves that dot the shoreline between Big Sur and Santa Barbara.\n\nEach cove had its own personality. Some were wide and welcoming, their sand warm and golden. Others were narrow slots in the cliffs, where the water turned an impossible shade of turquoise and the sunlight danced on the walls like liquid fire.\n\nThe hidden gem was a cove accessible only through a sea cave at low tide. Inside, the water glowed bioluminescent blue, and the sand was littered with shells I had never seen before.',
+    tags: ['pacific', 'coves', 'kayaking', 'hidden-beaches'],
+    location: 'Big Sur, California',
+  },
+  {
+    slug: 'diving-the-coral-triangle',
+    title: 'Diving the Coral Triangle',
+    date: '2026-05-28',
+    heroImage: 'https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=800&h=1200&fit=crop',
+    alt: 'Colorful coral reef teeming with tropical fish',
+    excerpt: 'Beneath the surface of Raja Ampat lies a world of color that rivals any rainforest. An underwater photography journey.',
+    body: 'Raja Ampat is the heart of the Coral Triangle, a region known as the Amazon of the oceans. The biodiversity here is staggering — over 75% of the world\'s coral species call these waters home.\n\nDropping beneath the surface is like entering another dimension. Soft corals in shades of purple and pink blanket the reef. Schools of fusiliers shimmer like silver curtains. A passing reef shark glides silently below.\n\nI spent ten days living on a liveaboard, capturing the reef at different times of day. The golden hour filters through the water column, creating shafts of light that illuminate the coral garden below.',
+    tags: ['diving', 'coral-reef', 'raja-ampat', 'underwater'],
+    location: 'Raja Ampat, Indonesia',
+  },
+  {
+    slug: 'midnight-beach-bioluminescence',
+    title: 'Midnight Beach: When the Shore Glows',
+    date: '2026-04-10',
+    heroImage: 'https://images.unsplash.com/photo-1559827291-baf8e45cee79?w=800&h=1200&fit=crop',
+    alt: 'Bioluminescent waves glowing blue at night on a beach',
+    excerpt: 'The plankton lit up with every step. What happens when the beach becomes a mirror of the stars above.',
+    body: 'I had read about bioluminescent bays, but nothing prepared me for the reality. The boat cut through water that glowed like liquid starlight, every ripple a cascade of blue fire.\n\nWhen we reached the shore, the beach itself seemed magical. With every step, the sand lit up beneath my feet — tiny dinoflagellates responding to the pressure, each one a pinprick of cold blue light.\n\nI stayed until dawn, watching the waves roll in electric blue. The sky slowly turned from black to deep purple to pink, and the bioluminescence faded as the sun rose over the horizon.',
+    tags: ['bioluminescence', 'night-beach', 'plankton', 'magic'],
+    location: 'Vieques, Puerto Rico',
+  },
+  {
+    slug: 'seashells-of-the-southern-sands',
+    title: 'Seashells of the Southern Sands',
+    date: '2026-03-05',
+    heroImage: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=1200&fit=crop',
+    alt: 'Intricate seashells scattered on white sand',
+    excerpt: 'A shell-collecting journey along the white sand beaches of the Philippines revealed treasures large and small.',
+    body: 'The beaches of Palawan are famous for their powdery white sand, but it\'s what washes up on that sand that tells the real story.\n\nEvery morning, the tide brings in a new collection of shells — cowries with their polished curves, cone shells with intricate geometric patterns, and the occasional sand dollar, perfectly intact.\n\nI learned to read the tide lines, to walk at dawn when the light was soft and the beach was empty. Each shell was a sculpture shaped by the sea, a tiny vessel that had traveled from the deep to rest on shore.',
+    tags: ['shells', 'philippines', 'palawan', 'beachcombing'],
+    location: 'Palawan, Philippines',
+  },
+]

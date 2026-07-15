@@ -1,0 +1,26 @@
+.zone-surface {
+  background-color: var(--zone-surface-bg);
+  color: var(--text-primary);
+}
+
+.zone-reef {
+  background-color: var(--zone-reef-bg);
+  color: var(--text-primary);
+}
+
+.zone-abyss {
+  background-color: var(--zone-abyss-bg);
+  color: var(--text-primary);
+}
+
+.zone-accent-surface {
+  color: var(--zone-surface-accent);
+}
+
+.zone-accent-reef {
+  color: var(--zone-reef-accent);
+}
+
+.zone-accent-abyss {
+  color: var(--zone-abyss-accent);
+}
