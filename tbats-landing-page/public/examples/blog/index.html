@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ocean Blog — Depths & Shores</title>
+    <script>
+      // Flash-prevention: apply dark theme before paint if previously set
+      (function () {
+        try {
+          var theme = localStorage.getItem('blog-theme');
+          if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/examples/blog/assets/index-3grUjFM9.js"></script>
+    <link rel="stylesheet" crossorigin href="/examples/blog/assets/index-Bo0_JSEP.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

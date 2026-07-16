@@ -11,7 +11,7 @@ const reactJsxRuntimeConfig = reactPlugin.configs['jsx-runtime'];
 const jsxA11yConfig = jsxA11yPlugin.configs.recommended;
 
 export default tseslint.config(
-  { ignores: ['dist/', 'build/', 'node_modules/', '.react-router/', '*.config.*', 'coverage/', 'playwright-report/', 'storybook-static/', '.storybook/', 'e2e/', 'src/demo/**/*.js'] },
+  { ignores: ['dist/', 'build/', 'node_modules/', '.react-router/', '*.config.*', 'coverage/', 'playwright-report/', 'storybook-static/', '.storybook/', 'e2e/', 'src/demo/**/*.js', 'public/examples/'] },
   js.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
