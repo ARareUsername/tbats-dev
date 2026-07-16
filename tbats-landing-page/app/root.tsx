@@ -21,7 +21,12 @@ function getCookieValue(cookieHeader: string | null, name: string): string | nul
 export async function loader({ request }: LoaderFunctionArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const themeVal = getCookieValue(cookieHeader, 'theme');
-  const theme: 'light' | 'dark' = themeVal === 'light' ? 'light' : 'dark';
+  const systemTheme = getCookieValue(cookieHeader, 'systemTheme');
+  const theme: 'light' | 'dark' = themeVal === 'light'
+    ? 'light'
+    : themeVal === 'dark'
+      ? 'dark'
+      : systemTheme === 'light' ? 'light' : 'dark';
   return { theme };
 }
 
