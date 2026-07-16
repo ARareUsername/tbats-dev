@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 __pycache__/
+
+# Generated build / coverage / type artifacts
+tbats-landing-page/build/
+tbats-landing-page/coverage/
+tbats-landing-page/.react-router/

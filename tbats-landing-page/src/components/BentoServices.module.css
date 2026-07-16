@@ -1,0 +1,315 @@
+.section {
+  padding: 8rem 0;
+  position: relative;
+  background-color: var(--bg-dark-end);
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--grid-dot-color) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(
+    circle at var(--sx, -1000px) var(--sy, -1000px),
+    black 0%,
+    transparent 250px
+  );
+  mask-image: radial-gradient(
+    circle at var(--sx, -1000px) var(--sy, -1000px),
+    black 0%,
+    transparent 250px
+  );
+}
+
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.badge {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.locationChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.locationIcon {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
+
+.card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  overflow: hidden;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px -10px rgba(16, 185, 129, 0.12);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.iconContainer {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardDescription {
+  color: var(--text-secondary);
+  font-size: 0.975rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.learnMoreBtn {
+  margin-top: auto;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition:
+    gap 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.learnMoreBtn:hover {
+  gap: 0.75rem;
+  opacity: 0.9;
+}
+
+.learnMoreArrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.learnMoreBtn:hover .learnMoreArrow {
+  transform: translateX(2px);
+}
+
+/* Graphics container inside the cards */
+.graphicContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  pointer-events: none;
+  opacity: 0.15;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 1;
+}
+
+.card:hover .graphicContainer {
+  opacity: 0.25;
+  transform: translateY(-5px);
+}
+
+/* Grid layout positions */
+.cardWebDesign {
+  grid-column: span 2;
+}
+
+.cardSeo {
+  grid-column: span 1;
+}
+
+.cardAi {
+  grid-column: span 1;
+}
+
+.cardHelp {
+  grid-column: span 2;
+}
+
+/* Graphic styles */
+.webDesignGraphic {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: 220px;
+  height: 140px;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px dashed rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 20px 1fr;
+  gap: 8px;
+}
+
+.graphicBar {
+  display: flex;
+  gap: 5px;
+}
+
+.graphicDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.graphicGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 8px;
+}
+
+.graphicBox {
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.02);
+}
+
+.seoGraphic {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 150px;
+  height: 120px;
+}
+
+.aiGraphic {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 150px;
+  height: 120px;
+}
+
+.helpGraphic {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: 300px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 14px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+}
+
+@media (width <= 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardWebDesign,
+  .cardHelp,
+  .cardSeo,
+  .cardAi {
+    grid-column: span 1;
+  }
+}
+
+@media (width <= 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardWebDesign,
+  .cardHelp,
+  .cardSeo,
+  .cardAi {
+    grid-column: span 1;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+}

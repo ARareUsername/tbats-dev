@@ -23,7 +23,7 @@ const teamMembers: readonly TeamMember[] = [
   {
     id: 1,
     name: 'Karl Bondoc',
-    role: 'Lead Web Engineer',
+    role: 'Web Developer',
     initials: 'KB',
     bio: 'Spearheads technical architecture, crafting high-performance React applications with modular, scalable code structures.',
     focus: ['React', 'Vite', 'State Management', 'Bespoke Frameworks'] as const,
@@ -33,7 +33,7 @@ const teamMembers: readonly TeamMember[] = [
   {
     id: 2,
     name: 'Emmanuel Ken Almendra',
-    role: 'Lead UI/UX Architect',
+    role: 'Web Developer',
     initials: 'EA',
     bio: 'Designs high-fidelity wireframes, fluid layout systems, and aesthetic interactions that bridge the gap between design and development.',
     focus: ['Figma', 'Art Direction', 'Visual Systems', 'Design Tokens'] as const,
@@ -43,7 +43,7 @@ const teamMembers: readonly TeamMember[] = [
   {
     id: 3,
     name: 'Mark Angelo Mendoza',
-    role: 'React Platform Specialist',
+    role: 'Web Developer',
     initials: 'MM',
     bio: 'Specializes in building interactive web platforms, smooth animations, and solid frontend components.',
     focus: ['Tailwind CSS', 'Framer Motion', 'Component APIs', 'Fluid Layouts'] as const,
@@ -53,20 +53,10 @@ const teamMembers: readonly TeamMember[] = [
   {
     id: 4,
     name: 'Daile Paragas',
-    role: 'Performance & SEO Analyst',
+    role: 'Web Developer',
     initials: 'DP',
     bio: 'Maintains optimal loading speeds, clean semantic code structures, and advanced Google search optimization strategies.',
     focus: ['Web Vitals', 'Semantic HTML', 'Google SEO', 'Analytics Pipelines'] as const,
-    spanClass: 'span-2',
-    socials: { linkedin: '#', github: '#' },
-  },
-  {
-    id: 5,
-    name: 'Kyle Cyrill Lumacad',
-    role: 'Systems & Backend Developer',
-    initials: 'KL',
-    bio: 'Architects secure backend integrations, form data submissions, database connectors, and API gateways.',
-    focus: ['REST APIs', 'Node.js', 'Database Architecture', 'Security Standards'] as const,
     spanClass: 'span-2',
     socials: { linkedin: '#', github: '#' },
   },
@@ -90,7 +80,7 @@ export default function Team() {
             <Card
               key={member.id}
               variant="team"
-              className={`${styles.teamCard} ${styles[member.spanClass]} editorial-card ${styles.cardWrapper}`}
+              className={`${styles.teamCard} ${styles[member.spanClass]} editorial-card card-spotlight ${styles.cardWrapper}`}
             >
               <div>
                 <Avatar initials={member.initials} size="md" className={styles.teamAvatar} />

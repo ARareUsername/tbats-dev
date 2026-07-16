@@ -87,7 +87,7 @@ export default function ClientTimeline() {
               </div>
 
               {/* Step content card */}
-              <Card variant="editorial" className={styles.card}>
+              <Card variant="editorial" className={`card-spotlight ${styles.card}`}>
                 <div className={styles.cardHeader}>
                   <div>
                     <h3 className={styles.cardTitle}>{step.title}</h3>

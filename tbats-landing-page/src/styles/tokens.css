@@ -31,6 +31,7 @@
   --font-heading: var(--font-sans-display);
 
   --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-base: all 0.3s ease;
   --bubble-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 
   --space-xs: 0.5rem;

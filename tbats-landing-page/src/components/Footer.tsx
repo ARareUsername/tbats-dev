@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import Container from '@components/ui/Container';
 import styles from './Footer.module.css';
 
@@ -23,22 +24,52 @@ export default function Footer() {
 
           <div className={styles.links}>
             <div>
+              <h4 className={styles.linksTitle}>Services</h4>
+              <ul className={styles.linksList}>
+                <li>
+                  <Link to="/services/web-design" className={styles.link}>
+                    Web Design
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/seo" className={styles.link}>
+                    SEO & Growth
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/ai-solutions" className={styles.link}>
+                    AI Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/1-on-1-help" className={styles.link}>
+                    1-on-1 Help
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
               <h4 className={styles.linksTitle}>Company</h4>
               <ul className={styles.linksList}>
                 <li>
-                  <a href="#about" className={styles.link}>
+                  <Link to="/about" className={styles.link}>
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#process" className={styles.link}>
-                    Our Process
-                  </a>
-                </li>
-                <li>
-                  <a href="#pricing" className={styles.link}>
+                  <Link to="/pricing" className={styles.link}>
                     Pricing
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/our-work/case-studies" className={styles.link}>
+                    Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/our-work/portfolio" className={styles.link}>
+                    Portfolio
+                  </Link>
                 </li>
               </ul>
             </div>

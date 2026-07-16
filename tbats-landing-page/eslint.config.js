@@ -77,4 +77,10 @@ export default tseslint.config(
       'jsx-a11y/role-has-required-aria-props': 'warn',
     },
   },
+  {
+    files: ['app/routes/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  }
 );

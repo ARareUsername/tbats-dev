@@ -1,21 +1,11 @@
-/* eslint-disable react-refresh/only-export-components */
 import type { ReactNode } from 'react';
-import type { ActionFunctionArgs } from 'react-router';
-import { useRouteLoaderData, useFetcher } from 'react-router';
 import { m } from 'framer-motion';
 import useReducedMotion from '@hooks/useReducedMotion';
 
-import Header from '@components/Header';
 import Hero from '@components/Hero';
-import ServicesList from '@components/ServicesList';
+import BentoServices from '@components/BentoServices';
 import ProjectGallery from '@components/ProjectGallery';
-import ClientTimeline from '@components/ClientTimeline';
-import InteractiveEstimator from '@components/InteractiveEstimator';
-import Testimonials from '@components/Testimonials';
-import FAQAccordion from '@components/FAQAccordion';
-import ConsultationForm from '@components/ConsultationForm';
-import Footer from '@components/Footer';
-import BackToTop from '@components/BackToTop';
+import WhyChooseUs from '@components/WhyChooseUs';
 
 export function meta() {
   return [
@@ -42,43 +32,14 @@ const ScrollReveal = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
-  const intent = formData.get('intent');
-
-  if (intent === 'theme') {
-    const theme = formData.get('theme');
-    if (theme === 'light' || theme === 'dark') {
-      return new Response(JSON.stringify({ success: true }), {
-        headers: {
-          'Set-Cookie': `theme=${theme}; Path=/; Max-Age=31536000; SameSite=Lax`,
-          'Content-Type': 'application/json',
-        },
-      });
-    }
-    return new Response(JSON.stringify({ error: 'Invalid theme' }), { status: 400 });
-  }
-
-  return new Response('Unknown intent', { status: 400 });
-}
-
 export default function LandingRoute() {
-  const rootData = useRouteLoaderData('root') as { theme: 'light' | 'dark' } | null;
-  const theme = rootData?.theme || 'dark';
-  const fetcher = useFetcher();
-
-  const setTheme = (newTheme: 'light' | 'dark') => {
-    void fetcher.submit({ intent: 'theme', theme: newTheme }, { method: 'post' });
-  };
-
   return (
     <div style={{ position: 'relative', overflow: 'hidden', zIndex: 1 }}>
-      <Header theme={theme} setTheme={setTheme} />
       <Hero />
 
       <div className="section-divider" />
       <ScrollReveal>
-        <ServicesList />
+        <BentoServices />
       </ScrollReveal>
 
       <div className="section-divider" />
@@ -88,32 +49,9 @@ export default function LandingRoute() {
 
       <div className="section-divider" />
       <ScrollReveal>
-        <ClientTimeline />
+        <WhyChooseUs />
       </ScrollReveal>
 
-      <div className="section-divider" />
-      <ScrollReveal>
-        <InteractiveEstimator />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <ScrollReveal>
-        <Testimonials />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <ScrollReveal>
-        <FAQAccordion />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <ScrollReveal>
-        <ConsultationForm />
-      </ScrollReveal>
-
-      <div className="section-divider" />
-      <Footer />
-      <BackToTop />
     </div>
   );
 }

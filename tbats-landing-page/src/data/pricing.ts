@@ -1,77 +1,78 @@
-export type TierId = 'starter' | 'growth' | 'custom';
+export type TierId = 'starter' | 'growth' | 'merchant';
 
 export interface PricingTier {
   id: TierId;
   name: string;
   price: string;
-  priceNote?: string;
+  setupFee: string;
   desc: string;
   benefits: readonly string[];
   highlight?: boolean;
 }
 
-export interface CarePlan {
-  name: string;
-  price: string;
-  desc: string;
-  benefits: readonly string[];
-}
-
 export const starter: PricingTier = {
   id: 'starter',
-  name: 'Starter',
-  price: '₱20,000',
-  priceNote: 'one-time',
-  desc: 'Perfect for barbershops, cafés, and thrift stores ready to look like a real brand.',
+  name: 'Starter Plan',
+  price: '₱1,499',
+  setupFee: '₱2,999 setup fee',
+  desc: 'Perfect for local brands needing a high-end single-page online presence.',
   benefits: [
-    'Look like an established brand, not just a Facebook page.',
-    'Live in 2–3 weeks — get found on Google, not only Facebook.',
-    'Customers reach you 24/7 through a real contact form.',
-    'We set up your Google Business Profile so locals find you.',
+    'Custom responsive single-page website',
+    'Domain registration, hosting, SSL & security',
+    '1 Google Workspace Business Email',
+    'ADA & accessibility compliant',
+    '10 content updates per month',
+    'Blazing-fast speed optimization',
+    'Basic local SEO setup',
+    'Basic website traffic analytics',
+    'Monthly uptime monitoring',
+    '1 hour of monthly developer support',
   ],
 };
 
 export const growth: PricingTier = {
   id: 'growth',
-  name: 'Growth',
-  price: '₱49,000',
-  priceNote: 'one-time',
-  desc: 'For owners who want to grow and manage their own content with confidence.',
+  name: 'Growth Plan',
+  price: '₱2,999',
+  setupFee: '₱4,999 setup fee',
+  desc: 'Our most popular plan for businesses wanting a standard multi-page website.',
   benefits: [
-    'Update your own site in minutes — no waiting on a developer.',
-    'See which pages bring customers, so you know what works.',
-    'Rank higher on Google with built-in local SEO.',
-    'Room to grow — up to 10 pages, a blog, and more.',
+    'Custom responsive 5-to-8 page website',
+    'Domain registration, hosting, SSL & security',
+    '1 Google Workspace Business Email',
+    'ADA & accessibility compliant',
+    '10 content updates per month',
+    'Blazing-fast speed optimization',
+    'Standard local SEO setup',
+    'Basic website traffic analytics',
+    'Monthly uptime monitoring',
+    'Basic e-commerce integrations',
+    '3 hours of monthly developer support',
   ],
   highlight: true,
 };
 
-export const custom: PricingTier = {
-  id: 'custom',
-  name: 'Custom',
-  price: "Let's scope together",
-  desc: 'E-commerce, booking, or a bigger platform built around your needs.',
+export const merchant: PricingTier = {
+  id: 'merchant',
+  name: 'Merchant Plan',
+  price: '₱5,999',
+  setupFee: '₱9,999 setup fee',
+  desc: 'Your full digital team on-demand for full-featured e-commerce stores.',
   benefits: [
-    "E-commerce, booking, or a larger platform? We'll scope it with you.",
-    'Priced around your needs — no template, no jargon.',
-    'The same experienced team, same plain-language support.',
+    'Everything in the Growth Plan',
+    'Full online store & catalog checkout',
+    'Payment gateway & shipping integrations',
+    'Custom software & web features development',
+    'One team managing every product & listing',
+    '5 Google Workspace Business Emails',
+    'Google Business Profile optimization',
+    'Custom SEO strategy & content execution',
+    'AI chatbot or custom automations setup',
+    'Advanced analytics dashboard setup',
+    'Dedicated account manager support',
+    'Same-day developer support response',
+    '5 hours of monthly developer support',
   ],
 };
 
-export const tiers: readonly PricingTier[] = [starter, growth, custom];
-
-export const carePlan: CarePlan = {
-  name: 'Care Plan',
-  price: '₱2,500/mo',
-  desc: 'We host, update, and manage the backend so you never touch the tech.',
-  benefits: [
-    'Zero downtime — we handle uptime, security patches, and performance.',
-    'Your site stays fast and secure as you grow.',
-    'Real developers on call, in plain language — no ghosting.',
-  ],
-};
-
-export const paymentTerms = 'Flexible terms: 50% to start, 50% on launch.';
-
-export const launchOffer =
-  'First 3 clients get a case-study rate in exchange for a testimonial and permission to showcase their site.';
+export const tiers: readonly PricingTier[] = [starter, growth, merchant];

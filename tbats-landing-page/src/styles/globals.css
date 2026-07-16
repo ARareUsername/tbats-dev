@@ -129,6 +129,23 @@ a {
     border-color 0.5s ease;
 }
 
+.glass-nav.scrolled {
+  top: 1.25rem;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: calc(100% - 2.5rem);
+  max-width: var(--container-max);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color);
+  background: var(--nav-bg);
+}
+
+.theme-light .glass-nav.scrolled {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -183,6 +200,56 @@ a {
 /* Sections */
 section {
   padding: var(--space-xl) 0;
+}
+
+/* Cursor-following spotlight for cards (desktop fine-pointer only).
+   Reuses --mouse-x/--mouse-y already set on :root by GlobalFeatures.
+   Inert on touch: no mousemove fires, so the gradient stays off-screen. */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    320px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    rgba(16, 185, 129, 0.12),
+    transparent 60%
+  );
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .card-spotlight::before {
+    display: none;
+  }
+}
+
+/* Scroll progress bar (desktop fine-pointer, no reduced-motion) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--color-accent);
+  z-index: 1000;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,7 @@
 .section {
   position: relative;
+  padding: 8rem 0;
+  background: var(--bg-dark-end);
 }
 
 .header {
@@ -8,63 +10,70 @@
 }
 
 .subtitle {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.75rem;
 }
 
 .title {
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  font-weight: 800;
 }
 
 .description {
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.6;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  max-width: 900px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   text-decoration: none;
   color: inherit;
   transition: var(--transition-smooth);
   background: var(--bg-card);
+  height: 320px;
 }
 
 .card:hover {
   border-color: var(--color-accent);
-  transform: translateY(-4px);
-}
-
-.cardFull {
-  grid-column: 1 / -1;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px -10px rgba(16, 185, 129, 0.2);
 }
 
 .image {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  object-fit: cover;
   overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.card:hover .image {
+  transform: scale(1.06);
 }
 
 .image::after {
@@ -74,47 +83,106 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
-  opacity: 0.35;
+  opacity: 0.15;
   mix-blend-mode: overlay;
   pointer-events: none;
 }
 
-.body {
-  padding: 1.5rem;
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: flex-end;
+  padding: 2rem;
+  z-index: 2;
+  transition: background 0.4s ease;
+}
+
+.card:hover .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
 }
 
 .industry {
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--color-accent);
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .projectName {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
+  color: #ffffff;
   margin: 0;
 }
 
 .result {
   font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 0.25rem;
 }
 
-/* Responsive: third card spans full by default on desktop too via .cardFull */
+.tagsContainer {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
-@media (max-width: 768px) {
+.card:hover .tagsContainer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tag {
+  font-size: 0.675rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width <= 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 640px) {
   .grid {
     grid-template-columns: 1fr;
   }
 
-  .cardFull {
-    grid-column: auto;
+  .card {
+    height: 280px;
   }
 }

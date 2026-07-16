@@ -1,27 +1,24 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
 import CustomCursor from './CustomCursor';
+import ScrollProgress from './ScrollProgress';
+import useReducedMotion from '@hooks/useReducedMotion';
 
 interface GlobalFeaturesProps {
   theme: 'light' | 'dark';
 }
 
 export default function GlobalFeatures({ theme }: GlobalFeaturesProps) {
-  const location = useLocation();
-  const isDemoRoute = location.pathname.startsWith('/demo');
+  const prefersReducedMotion = useReducedMotion();
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    if (isDemoRoute) {
-      document.body.classList.add('demo-route');
-    } else {
-      document.body.classList.remove('demo-route');
-    }
-  }, [isDemoRoute]);
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
+
+  const effectsEnabled = !isTouchDevice && !prefersReducedMotion;
 
   // Track cursor position on document root using high-performance single requestAnimationFrame
   useEffect(() => {
-    if (isDemoRoute) return;
-
     let animationFrameId: number;
     let mouseX = -100;
     let mouseY = -100;
@@ -48,14 +45,13 @@ export default function GlobalFeatures({ theme }: GlobalFeaturesProps) {
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isDemoRoute]);
-
-  if (isDemoRoute) return null;
+  }, []);
 
   return (
     <>
       <CustomCursor theme={theme} />
       <div className="dot-matrix-grid" />
+      <ScrollProgress enabled={effectsEnabled} />
     </>
   );
 }

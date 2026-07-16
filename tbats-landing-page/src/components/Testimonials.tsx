@@ -45,7 +45,7 @@ export default function Testimonials() {
 
         <div className="grid-3">
           {reviews.map((review, i) => (
-            <Card key={i} variant="editorial" className={styles.card}>
+            <Card key={i} variant="editorial" className={`card-spotlight ${styles.card}`}>
               <div
                 className={styles.stars}
                 role="img"

@@ -50,7 +50,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const userName = formData.get('user_name')?.toString().trim() || '';
   const userEmail = formData.get('user_email')?.toString().trim() || '';
-  const projectBudget = formData.get('project_budget')?.toString().trim() || '';
+  const userPhone = formData.get('user_phone')?.toString().trim() || '';
   const projectDesc = formData.get('project_desc')?.toString().trim() || '';
   const botField = formData.get('bot_field')?.toString().trim() || ''; // Honeypot field
 
@@ -100,7 +100,7 @@ export async function action({ request }: ActionFunctionArgs) {
       template_params: {
         user_name: userName,
         user_email: userEmail,
-        project_budget: projectBudget,
+        user_phone: userPhone,
         project_desc: projectDesc,
       },
     };

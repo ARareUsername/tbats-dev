@@ -25,10 +25,10 @@ describe('ConsultationForm', () => {
   test('renders all form fields', () => {
     render(<ConsultationForm />);
 
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Full Name')).toBeInTheDocument();
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
-    expect(screen.getByLabelText('Budget Estimate')).toBeInTheDocument();
-    expect(screen.getByLabelText('Project Description')).toBeInTheDocument();
+    expect(screen.getByLabelText('Phone Number')).toBeInTheDocument();
+    expect(screen.getByLabelText('Tell us about your business goals')).toBeInTheDocument();
   });
 
   test('renders the submit button', () => {
@@ -57,9 +57,10 @@ describe('ConsultationForm', () => {
   test('required fields have required attribute', () => {
     render(<ConsultationForm />);
 
-    expect(screen.getByLabelText('Name')).toHaveAttribute('required');
+    expect(screen.getByLabelText('Full Name')).toHaveAttribute('required');
     expect(screen.getByLabelText('Email')).toHaveAttribute('required');
-    expect(screen.getByLabelText('Project Description')).toHaveAttribute('required');
+    expect(screen.getByLabelText('Phone Number')).not.toHaveAttribute('required');
+    expect(screen.getByLabelText('Tell us about your business goals')).toHaveAttribute('required');
   });
 
   test('email field has email type', () => {
@@ -68,10 +69,11 @@ describe('ConsultationForm', () => {
     expect(screen.getByLabelText('Email')).toHaveAttribute('type', 'email');
   });
 
-  test('renders budget options', () => {
+  test('phone field uses PH prefix and tel type', () => {
     render(<ConsultationForm />);
 
-    expect(screen.getByRole('option', { name: '₱20,000 (Starter)' })).toBeInTheDocument();
-    expect(screen.getByRole('option', { name: '₱49,000 (Growth)' })).toBeInTheDocument();
+    const phone = screen.getByLabelText('Phone Number');
+    expect(phone).toHaveAttribute('type', 'tel');
+    expect((phone as HTMLInputElement).value).toMatch(/^\+63 /);
   });
 });

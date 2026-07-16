@@ -1,119 +1,108 @@
 # TBATS Studio
 
-**Crafting Digital Experiences That Convert**
+**Pampanga Web Design Company — Affordable Websites That Bring You Customers**
 
-> Premium agency website, interactive demo sandbox, and spec-driven development workspace.
+> A premium web development studio based in Pampanga, Philippines. We design,
+> build, and fully manage fast, modern websites for local businesses — no
+> upfront fees, no tech jargon, just results.
 
 [![Live Site](https://img.shields.io/badge/Live-Site-6CB4EE?style=flat-square&logo=netlify&logoColor=white)](https://tbats.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
-[![GitHub Stars](https://img.shields.io/github/stars/ARareUsername/tbats-dev?style=flat-square&logo=github&label=Stars)](https://github.com/ARareUsername/tbats-dev)
 [![License](https://img.shields.io/badge/License-Private-ff69b4?style=flat-square)](<>)
 
-[Live Site](https://tbats.dev) · [App README](./tbats-landing-page/README.md) · [Contributing](./tbats-landing-page/CONTRIBUTING.md)
+**Live site:** [tbats.dev](https://tbats.dev) · **App docs:** [tbats-landing-page/README.md](./tbats-landing-page/README.md) · **Contributing:** [CONTRIBUTING.md](./tbats-landing-page/CONTRIBUTING.md)
 
-## Project Structure
+---
 
-```mermaid
-graph TD
-    root[TBATS Studio] --> app[tbats-landing-page]
-    root --> openspec[openspec]
-    root --> agent[.agent]
-    app --> src[src/]
-    app --> e2e[e2e/]
-    app --> stories[stories/]
-    app --> public[public/]
-    app --> netlify[netlify.toml]
-    app --> package[package.json]
-    openspec --> specs[specs/]
-    openspec --> changes[changes/]
-    agent --> skills[skills/]
-```
+## What We Build
 
-## Features
+TBATS is a real, production agency website — a showcase of the kind of work we
+do for clients. Every section below is built from scratch (no templates) and
+reflects our design and engineering standards.
 
-- **Server-Side Rendering** — React Router 7 hybrid SSR/SPA for fast initial loads and SEO
-- **Dark & Light Mode** — Theme-aware design system with seamless toggle
-- **Rich Animations** — Framer Motion 12 powered micro-interactions and page transitions
-- **Accessibility** — ARIA labels, keyboard navigation, screen reader support, skip links
-- **Contact Form** — EmailJS-powered with client-side validation
-- **Pricing Estimator** — Interactive project cost calculator with regional pricing
+| Section | What it shows |
+| --- | --- |
+| **Hero** | Pampanga-focused headline, ambient floating UI cards, and a plain-language pitch. |
+| **Services** | Bento grid of offerings with a cursor spotlight and a "Pampanga, Philippines" chip. |
+| **Project Gallery** | Real website placeholders, scroll-reveal cards, accessible imagery. |
+| **Pricing** | Transparent monthly plans, no setup fees, info tooltips. |
+| **Contact** | Google-style reviews block + a "Prefer to Text? We're Here" CTA. |
+| **Final CTA** | Ambient dust + glow, availability pill, icon buttons. |
+
+### Selected Work
+
+A glimpse at the website concepts featured in the Project Gallery:
+
+<p align="center">
+  <img src="tbats-landing-page/public/images/projects/project-1.webp" width="30%" alt="Project preview 1" />
+  <img src="tbats-landing-page/public/images/projects/project-2.webp" width="30%" alt="Project preview 2" />
+  <img src="tbats-landing-page/public/images/projects/project-3.webp" width="30%" alt="Project preview 3" />
+</p>
+<p align="center">
+  <img src="tbats-landing-page/public/images/projects/project-4.webp" width="30%" alt="Project preview 4" />
+  <img src="tbats-landing-page/public/images/projects/project-5.webp" width="30%" alt="Project preview 5" />
+  <img src="tbats-landing-page/public/images/projects/project-6.webp" width="30%" alt="Project preview 6" />
+</p>
+
+---
+
+## Why It's Built This Way
+
+- **Server-Side Rendering** — React Router hybrid SSR/SPA for fast loads and SEO.
+- **Dark & Light Mode** — Theme-aware design system with a seamless toggle.
+- **Rich Animations** — Framer Motion micro-interactions and scroll reveals.
+- **Accessibility** — ARIA labels, keyboard navigation, skip links, reduced-motion support.
+- **We Manage It** — hosting, updates, and support handled by us, so clients don't have to.
 
 ## Tech Stack
 
-| Technology                                       | Purpose                                     |
-| ------------------------------------------------ | ------------------------------------------- |
-| [React 19](https://react.dev)                    | UI library                                  |
-| [React Router 7](https://reactrouter.com)        | Hybrid SSR/SPA routing                      |
-| [Vite 8](https://vite.dev)                       | Build tool and dev server                   |
-| [TypeScript 5.6](https://www.typescriptlang.org) | Strict mode with `noUncheckedIndexedAccess` |
-| [Framer Motion 12](https://motion.dev)           | Animation library                           |
-| [Vitest](https://vitest.dev)                     | Unit and integration testing                |
-| [Playwright](https://playwright.dev)             | End-to-end testing                          |
-| [Storybook](https://storybook.js.org)            | Component development and documentation     |
+| Technology | Purpose |
+| --- | --- |
+| [React 19](https://react.dev) | UI library |
+| [React Router 7](https://reactrouter.com) | Hybrid SSR/SPA routing |
+| [Vite 8](https://vite.dev) | Build tool and dev server |
+| [TypeScript 5.6](https://www.typescriptlang.org) | Strict mode |
+| [Framer Motion 12](https://motion.dev) | Animation library |
+| [Vitest](https://vitest.dev) | Unit & integration testing |
+| [Playwright](https://playwright.dev) | End-to-end testing |
+| [Storybook](https://storybook.js.org) | Component development |
 
-## Quick Start
+---
+
+## Run It Locally
 
 ```bash
 cd tbats-landing-page
 npm install --legacy-peer-deps
-npm run dev
+npm run dev          # http://localhost:5173
 ```
 
-The dev server starts at `http://localhost:5173`.
+Other scripts:
 
-## Scripts
+| Command | Description |
+| --- | --- |
+| `npm run build` | Production build |
+| `npm run preview` | Preview the production build (port 4173) |
+| `npm run test` | Unit/integration tests (Vitest) |
+| `npm run test:e2e` | End-to-end tests (Playwright) |
+| `npm run lint` | ESLint (zero warnings required) |
+| `npm run typecheck` | TypeScript type checking |
+| `npm run storybook` | Component explorer (port 6006) |
 
-### Development
+See [tbats-landing-page/README.md](./tbats-landing-page/README.md) for the full
+architecture, script reference, and deployment details.
 
-| Command             | Description                          |
-| ------------------- | ------------------------------------ |
-| `npm run dev`       | Start Vite dev server                |
-| `npm run storybook` | Start Storybook on port 6006         |
-| `npm run preview`   | Preview production build (port 4173) |
+---
 
-### Build
+## Deploy & Quality
 
-| Command                   | Description                               |
-| ------------------------- | ----------------------------------------- |
-| `npm run build`           | Production build to `dist/`               |
-| `npm run build:analyze`   | Build with bundle analysis (`stats.html`) |
-| `npm run build:storybook` | Build Storybook for deployment            |
-
-### Test
-
-| Command                 | Description                           |
-| ----------------------- | ------------------------------------- |
-| `npm run test`          | Run unit/integration tests (Vitest)   |
-| `npm run test:watch`    | Run tests in watch mode               |
-| `npm run test:coverage` | Tests with 80% coverage threshold     |
-| `npm run test:e2e`      | E2E tests (Chromium, Firefox, WebKit) |
-
-### Quality
-
-| Command             | Description                               |
-| ------------------- | ----------------------------------------- |
-| `npm run typecheck` | TypeScript type checking (`tsc --noEmit`) |
-| `npm run lint`      | ESLint (zero warnings required)           |
-| `npm run lint:fix`  | ESLint auto-fix                           |
-| `npm run format`    | Prettier formatting                       |
-
-## Quality & Conventions
-
-- **Conventional Commits** — commitlint enforces commit message format (feat, fix, docs, etc.)
-- **Pre-commit Hooks** — Husky + lint-staged run ESLint and Prettier on staged files
-- **ESLint Zero-Warnings** — CI fails on any warning or unused directive
-- **TypeScript Strict** — Full strict mode with `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noUnusedLocals`, `noUnusedParameters`
-- **Test Coverage** — 80% minimum on statements, branches, functions, and lines
-- **Lighthouse Budget** — Performance and accessibility thresholds enforced in CI
-
-## Deployment
-
-Deployed to **Netlify**. Build command: `npm run build`, publish directory: `dist/`. Security headers and redirects configured in `netlify.toml`.
-
-## Contributing
-
-See [CONTRIBUTING.md](./tbats-landing-page/CONTRIBUTING.md) for guidelines on development workflow, commit conventions, and pull request process.
+- **Deployed** to Netlify — build `npm run build`, publish `dist/`, with strict
+  CSP and security headers in `netlify.toml`.
+- **Conventional Commits** enforced via commitlint + Husky pre-commit hooks.
+- **CI** runs typecheck → lint (zero warnings) → test (80% coverage) → build →
+  e2e → deploy.
+- **Lighthouse** performance & accessibility budgets enforced in CI.
 
 ## License
 
