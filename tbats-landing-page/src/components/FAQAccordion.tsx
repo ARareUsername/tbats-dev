@@ -22,7 +22,7 @@ const faqs: readonly FAQItem[] = [
   {
     question: 'Do I own my website and its assets?',
     answer:
-      'Yes. You fully own your codebase, designs, and assets. We build on your accounts (domain, hosting, Google Workspace) so nothing is locked to us, and you can leave anytime with zero lock-in contracts.',
+      'No. Your website is hosted and managed by us as part of your plan, so you never have to deal with servers, renewals, or maintenance. We handle everything so you can focus on your business.',
   },
   {
     question: 'How long does it take to launch?',

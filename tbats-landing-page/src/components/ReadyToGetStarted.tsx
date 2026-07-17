@@ -42,11 +42,6 @@ export default function ReadyToGetStarted() {
           here to bring your vision to life.
         </p>
 
-        <div className={styles.pill}>
-          <span className={styles.pillDot} aria-hidden="true" />
-          Now booking — Q3 2026
-        </div>
-
         <div className={styles.btnGroup}>
           <Button as="a" href="sms:+639171234567" variant="secondary" size="lg">
             <span className={`material-symbols-outlined ${styles.btnIcon}`} aria-hidden="true">
